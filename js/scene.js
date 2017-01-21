@@ -1,13 +1,13 @@
 var Scene = function() {};
 
 Scene.prototype.preload = function() {
-  this.load.image('player1', 'assets/sprites/player1.png');
-  this.load.image('player2', 'assets/sprites/player2.png');
-  this.load.image('megawave', 'assets/sprites/waveatk.png');
+
 };
 
 Scene.prototype.create = function() {
 
+  var countdown = new Countdown(this, DURATION);
+  countdown.start(this);
   //var waveTextGroup = new Phaser.Group(this);
 
   var wave1 = new Wave(this, 0, 200, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'megawave', 'waveatk-l', MEGAWAVE1, ATK, false, 0);
@@ -18,9 +18,8 @@ Scene.prototype.create = function() {
   var wave6 = new Wave(this, 1050, 600, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'megawave', 'waveatk-l', MEGAWAVE6, ATK, false, 0);
 
   // création des personnages
-  var player1 = new Player(this, PLAYER1X, PLAYER1Y, 'player1', null, null, null, 1);
-  var player2 = new Player(this, PLAYER2X, PLAYER2Y, 'player2', null, null, null, 1);
-
+  var player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', 0, 0, null, null, null, 1);
+  var player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', this.world.width - HEALTH_BAR_WIDTH, 0, null, null, null, 1);
 
   this.add.existing(player1);
   this.add.existing(player2);
@@ -30,5 +29,4 @@ Scene.prototype.create = function() {
   this.add.existing(wave4);
   this.add.existing(wave5);
   this.add.existing(wave6);
-
 };
