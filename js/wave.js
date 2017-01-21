@@ -14,8 +14,8 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.addChild(this.valueText);
 
   this.bigWave = game.add.tileSprite(WAVE_BIG_POSX, WAVE_BIG_POSY, width, height, spriteName);
-  this.bigWave.scale.x = 4.5;
-  this.bigWave.scale.y = 4.5;
+  this.bigWave.scale.x = 5;
+  this.bigWave.scale.y = 5;
   this.bigWave.visible = false;
 
   // var style = { font: "32px Arial", fill: "#ff0000", align: "center" };

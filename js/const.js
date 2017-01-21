@@ -26,6 +26,7 @@ const COUNTDOWN_TEXT_SHADOW_BLUR = 7;
 
 /* Health bar */
 const HEALTH_BAR_WIDTH = 540;
+const HEALTH_BAR_HEIGHT = 48;
 
 /* Wave list */
 const TRIANGLE = [9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0,0,1,1,2,2,3,4,4,5,5,6,7,7,8,8,9,
@@ -67,8 +68,8 @@ const WAVE_TEXT_COLOR = '#FF0000';
 const WAVE_TEXT_ALIGN = 'left'
 const WAVE_RESET_DELAY = 2000;
 const LOCK_WAVE_SELECTION_DELAY = 200;
-const WAVE_BIG_POSX = 65;
-const WAVE_BIG_POSY = 180;
+const WAVE_BIG_POSX = 20;
+const WAVE_BIG_POSY = 150;
 
 // Waves states
 const WAVE_DEFAULT = 0;

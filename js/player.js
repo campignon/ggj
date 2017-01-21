@@ -2,13 +2,11 @@ var Player = function(game, id, x, y, spriteName, healthbar, menu, state) {
 
   Phaser.Sprite.call(this, game, x, y, spriteName);
   this.name = spriteName;
-  this.life = PLAYERLIFE;
   this.state = state;
   this.currentWave = 0;
   this.canSelectWave = true;
   this.menu = menu;
   this.healthbar = healthbar;
-  this.healthbar.initHealth(game, PLAYERLIFE);
   this.getCurrentWave().setState(WAVE_SELECTED);
 };
 
@@ -16,7 +14,7 @@ Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.update = function() {
-
+  this.healthbar.updateHealth();
 };
 
 Player.prototype.setPreviousWave = function() {
