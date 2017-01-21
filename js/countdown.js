@@ -11,6 +11,9 @@ var Countdown = function(game, duration) {
     fill: COUNTDOWN_TEXT_COLOR,
     align: "center"
   });
+  countdownText.setShadow(COUNTDOWN_TEXT_SHADOW_X,
+    COUNTDOWN_TEXT_SHADOW_Y, COUNTDOWN_TEXT_SHADOW_COLOR, COUNTDOWN_TEXT_SHADOW_BLUR);
+
   countdownSprite.addChild(countdownText);
   countdownText.anchor.setTo(0.5, 0);
 };

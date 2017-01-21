@@ -1,8 +1,8 @@
 var Booter = function() {};
 
 Booter.prototype.preload = function() {
-  this.load.image('logo', 'assets/images/logo.png');
-  this.load.image('preloadbar', 'assets/images/preloader-bar.png');
+  this.load.image('logo', 'assets/sprites/logo.png');
+  this.load.image('preloadbar', 'assets/sprites/preloader-bar.png');
 
   // No antialiasing
   Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
