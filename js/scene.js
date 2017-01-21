@@ -42,10 +42,11 @@ Scene.prototype.create = function() {
   pad1 = this.input.gamepad.pad1;
   pad2 = this.input.gamepad.pad2;
 
+  startGame();
   //lancement des timers du jeu
   wave1.startTimer();
   wave2.startTimer();
-  
+
 };
 
 Scene.prototype.update = function() {
@@ -72,6 +73,11 @@ Scene.prototype.update = function() {
   if (pad1.justPressed(Phaser.Gamepad.XBOX360_B)) {
     wave1.stopTimer();
   }
+
+}
+
+function startGame() {
+
 
 }
 
