@@ -7,14 +7,14 @@ Game.prototype.createGame = function() {
       '',
       this,
 			false, // transparent background
-			false // no antialias !
+			false // no antialiasing !
 		);
 
     // States
     this.game.state.add('Booter', Booter);
     this.game.state.add('Preloader', Preloader);
-    //this.game.state.add('MainMenu', );
-    //this.game.state.add('Scene', );
+    this.game.state.add('MainMenu', MainMenu);
+    this.game.state.add('Scene', Scene);
 
     this.game.state.start('Booter');
 };
