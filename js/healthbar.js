@@ -1,20 +1,42 @@
 var Healthbar = function(game, id, healthBarX, healthBarY) {
-  var bar = game.add.sprite(healthBarX, healthBarY, 'healthbar');
-  if(id==2) {
-    bar.scale.x *= -1;
-  }
-  bar.animations.add('walk');
-  bar.animations.play('walk', 23, true);
+  this.bar = game.add.sprite(healthBarX, healthBarY, 'healthbar');
+  this.scoreText;
+  this.id = id;
 
-  var playerNameText = game.add.text(0, 0, 'Player ' + id, {
-    font: '32px uni0553',
+  if(id==2) {
+    this.bar.scale.x *= -1;
+  }
+  this.bar.animations.add('walk');
+  this.bar.animations.play('walk', 23, true);
+
+  var playerNameTextSettings = {
+    font: '24px uni0553',
     fill: '#fff',
     align: 'left'
-  });
+  };
+  var playerNameText = game.add.text(0, 0, 'Player ' + id, playerNameTextSettings);
+
   if (id == 1) {
-    playerNameText.alignTo(bar, Phaser.BOTTOM_LEFT, -10, 0);
+    playerNameText.alignTo(this.bar, Phaser.BOTTOM_LEFT, -10, 0);
+  } else {
+    playerNameText.alignTo(this.bar, Phaser.BOTTOM_LEFT, 120, 0);
   }
-  else {
-    playerNameText.alignTo(bar, Phaser.BOTTOM_LEFT, 150, 0);
+};
+
+Healthbar.prototype.initHealth = function(game, maxHealth) {
+  var scoreSettings = {
+    font: '32px uni0553',
+    fill: '#fff',
+    align: 'center'
+  };
+  this.scoreText = game.add.text(0, 0, maxHealth, scoreSettings);
+  if (this.id == 1) {
+    this.scoreText.alignTo(this.bar, Phaser.BOTTOM_RIGHT, -5, 0);
+  } else {
+    this.scoreText.alignTo(this.bar, Phaser.BOTTOM_RIGHT, 60, 0);
   }
+};
+
+Healthbar.prototype.updateHealth = function() {
+
 };
