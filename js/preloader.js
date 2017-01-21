@@ -9,6 +9,13 @@ Preloader.prototype.preload = function() {
   logo.anchor.setTo(0.5);
   logo.scale.setTo(PRELOADER_LOGO_SCALE_FACTOR);
 
+  var preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY - PRELOADER_PRELOAD_BAR_OFFSET_Y, 'preloadbar');
+  preloadBar.anchor.setTo(0.5);
+  preloadBar.scale.setTo(PRELOADER_PRELOAD_BAR_SCALE_FACTOR);
+
+  // Apply preloader sprite
+  this.load.setPreloadSprite(preloadBar);
+
   // Loading assets
   this.load.image('playButton', 'assets/images/playButton.png');
 };

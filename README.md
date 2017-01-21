@@ -1,2 +1,3 @@
-# ggj
-GGJ Git Repository
+# Welcome to the Global Game Jam Repository for the CBT Team !
+
+Add content here
