@@ -48,9 +48,25 @@ Scene.prototype.create = function() {
 };
 
 Scene.prototype.update = function() {
-  // bouton changer pour la wave précédente
+  // bouton changer pour la wave précédente pour le joueur 1
   if (pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1 && player1.canSelectWave) {
     player1.setPreviousWave();
+    lockWaveSelection(player1);
+  }
+
+  if (pad2.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1 && player2.canSelectWave) {
+    player2.setPreviousWave();
+    lockWaveSelection(player2);
+  }
+
+  if (pad2.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1 && player2.canSelectWave) {
+    player2.setNextWave();
+    lockWaveSelection(player2);
+  }
+
+  // bouton changer pour la wave suivante pour le joueur 1
+  if (pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1 && player1.canSelectWave) {
+    player1.setNextWave();
     lockWaveSelection(player1);
   }
 
