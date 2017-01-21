@@ -43,9 +43,13 @@ Scene.prototype.create = function() {
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 200, [wave1, wave2, wave3]);
   var menu2 = new PlayerMenu(this, 'movelist-background2', this.world.width - 304, 200, [wave4, wave5, wave6]);
 
+  // Création des healthbars
+  var healthbar1 = new Healthbar(this, 1, 0, 0);
+  var healthbar2 = new Healthbar(this, 2, this.world.width, 0);
+
   // création des personnages
-  player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', 0, 0, menu1, 1);
-  player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', this.world.width, 0, menu2, 1);
+  player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', healthbar1, menu1, 1);
+  player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', healthbar2, menu2, 1);
 
   this.add.existing(player1);
   this.add.existing(player2);

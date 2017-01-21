@@ -1,4 +1,4 @@
-var Player = function(game, id, x, y, spriteName, healthBarX, healthBarY, menu, state) {
+var Player = function(game, id, x, y, spriteName, healthbar, menu, state) {
 
   Phaser.Sprite.call(this, game, x, y, spriteName);
   this.name = spriteName;
@@ -7,13 +7,8 @@ var Player = function(game, id, x, y, spriteName, healthBarX, healthBarY, menu, 
   this.currentWave = 0;
   this.canSelectWave = true;
   this.menu = menu;
+  this.healthbar = healthbar;
   this.getCurrentWave().setState(WAVE_SELECTED);
-  var healthbar = game.add.sprite(healthBarX, healthBarY, 'healthbar');
-  if(id==2) {
-    healthbar.scale.x *= -1;
-  }
-  healthbar.animations.add('walk');
-  healthbar.animations.play('walk', 23, true);
 };
 
 Player.prototype = Object.create(Phaser.Sprite.prototype);
