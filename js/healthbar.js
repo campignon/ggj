@@ -25,7 +25,7 @@ var Healthbar = function(game, id, healthBarX, healthBarY) {
 
 Healthbar.prototype.initHealth = function(game, maxHealth) {
   var scoreSettings = {
-    font: '32px uni0553',
+    font: '36px uni0553',
     fill: '#fff',
     align: 'center'
   };
@@ -37,6 +37,6 @@ Healthbar.prototype.initHealth = function(game, maxHealth) {
   }
 };
 
-Healthbar.prototype.updateHealth = function() {
-
+Healthbar.prototype.updateHealth = function(health) {
+  this.scoreText.setText(health);
 };
