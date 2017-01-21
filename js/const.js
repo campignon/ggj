@@ -47,3 +47,4 @@ const WAVE_FONT_SIZE = '20px';
 const WAVE_FONT_FAMILY = 'arial';
 const WAVE_TEXT_COLOR = '#FF0000';
 const WAVE_TEXT_ALIGN = 'left'
+const WAVE_RESET_DELAY = 2000;
