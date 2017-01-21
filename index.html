@@ -19,12 +19,15 @@
 	<script type="text/javascript" src="lib/phaserTools.js"></script>
 	<!-- own js files -->
 	<script type="text/javascript" src="js/const.js"></script>
+	<script type="text/javascript" src="js/booter.js"></script>
+	<script type="text/javascript" src="js/preloader.js"></script>
 	<script type="text/javascript" src="js/game.js"></script>
 	<script type="text/javascript" src="js/character.js"></script>
 	<!-- init -->
 	<script type="text/javascript">
 		window.onload = function() {
 			var game = new Game();
+			game.createGame();
 		};
 	</script>
 </body>
