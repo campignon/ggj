@@ -80,7 +80,6 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
         break;
       default: break;
     }
-    console.log("active");
   }
 
   this.isState = function(state) {

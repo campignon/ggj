@@ -3,7 +3,7 @@ var countdownText;
 
 var Countdown = function(game, duration) {
   var countdownSprite = game.add.sprite(game.world.centerX, 0, 'timer');
-  countdownSprite.anchor.setTo(0.53, 0);
+  countdownSprite.anchor.setTo(0.5, 0);
 
   currentTime = DURATION;
   countdownText = game.add.text(0, 0, currentTime, {

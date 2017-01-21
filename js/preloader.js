@@ -18,13 +18,20 @@ Preloader.prototype.preload = function() {
 
   // Loading assets
   this.load.image('playButton', 'assets/images/playButton.png');
-  this.load.image('timer', 'assets/images/timer.png');
+  this.load.image('timer', 'assets/sprites/timer.png');
   this.load.spritesheet('healthbar', 'assets/sprites/barredevie.png', 540,48);
   this.load.image('player1', 'assets/sprites/player1.png');
   this.load.image('player2', 'assets/sprites/player2.png');
   this.load.image('overlay', 'assets/sprites/overlay.png');
   this.load.image('ground', 'assets/sprites/ground.png');
-  this.load.spritesheet('megawave', 'assets/sprites/waveatk.png', WAVEWIDTH, WAVEHEIGHT, 2);
+  this.load.image('movelist-background1', 'assets/sprites/movelist-background1.png');
+  this.load.image('movelist-background2', 'assets/sprites/movelist-background2.png');
+  this.load.spritesheet('courbe1', 'assets/sprites/courbe1.png', WAVEWIDTH, WAVEHEIGHT, 4);
+  this.load.spritesheet('courbe2', 'assets/sprites/courbe2.png', WAVEWIDTH, WAVEHEIGHT, 4);
+  this.load.spritesheet('courbe3', 'assets/sprites/courbe3.png', WAVEWIDTH, WAVEHEIGHT, 4);
+  this.load.spritesheet('courbe4', 'assets/sprites/courbe4.png', WAVEWIDTH, WAVEHEIGHT, 4);
+  this.load.spritesheet('courbe5', 'assets/sprites/courbe5.png', WAVEWIDTH, WAVEHEIGHT, 4);
+  this.load.spritesheet('courbe6', 'assets/sprites/courbe6.png', WAVEWIDTH, WAVEHEIGHT, 4);
 };
 
 Preloader.prototype.create = function() {

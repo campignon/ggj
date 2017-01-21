@@ -24,19 +24,26 @@ Scene.prototype.create = function() {
   var countdown = new Countdown(this, DURATION);
   countdown.start(this);
 
-  wave1 = new Wave(this, 0, 200, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'waveatk-l', MEGAWAVE1, ATK, 0);
-  wave2 = new Wave(this, 0, 400, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'waveatk-l', MEGAWAVE2, ATK, 0);
-  wave3 = new Wave(this, 0, 600, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'waveatk-l', MEGAWAVE3, ATK, 0);
-  wave4 = new Wave(this, 1050, 200, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'waveatk-l', MEGAWAVE4, ATK, 0);
-  wave5 = new Wave(this, 1050, 400, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'waveatk-l', MEGAWAVE5, ATK, 0);
-  wave6 = new Wave(this, 1050, 600, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'waveatk-l', MEGAWAVE6, ATK, 0);
+  //création des waves
+  wave1 = new Wave(this, 32, 234, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'waveatk-l', MEGAWAVE1, ATK, 0);
+  wave2 = new Wave(this, 32, 312, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'waveatk-l', MEGAWAVE2, ATK, 0);
+  wave3 = new Wave(this, 32, 392, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'waveatk-l', MEGAWAVE3, ATK, 0);
+  wave4 = new Wave(this, this.world.width - 288, 234, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'waveatk-l', MEGAWAVE4, ATK, 0);
+  wave5 = new Wave(this, this.world.width - 288, 312, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'waveatk-l', MEGAWAVE5, ATK, 0);
+  wave6 = new Wave(this, this.world.width - 288, 392, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'waveatk-l', MEGAWAVE6, ATK, 0);
+
+  //création des menus
+  var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 200, [wave1, wave2, wave3]);
+  var menu2 = new PlayerMenu(this, 'movelist-background2', this.world.width - 304, 200, [wave4, wave5, wave6]);
 
   // création des personnages
-  player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', 0, 0, [wave1, wave2, wave3], 1);
-  player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', this.world.width, 0, [wave4, wave5, wave6], 1);
+  player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', 0, 0, menu1, 1);
+  player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', this.world.width, 0, menu2, 1);
 
   this.add.existing(player1);
   this.add.existing(player2);
+  this.add.existing(menu1);
+  this.add.existing(menu2);
   this.add.existing(wave1);
   this.add.existing(wave2);
   this.add.existing(wave3);
@@ -53,6 +60,11 @@ Scene.prototype.create = function() {
   //lancement des timers du jeu
   wave1.startTimer();
   wave2.startTimer();
+  wave3.startTimer();
+  wave4.startTimer();
+  wave5.startTimer();
+  wave6.startTimer();
+
 };
 
 Scene.prototype.update = function() {
