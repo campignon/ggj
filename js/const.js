@@ -12,7 +12,13 @@ const MAIN_MENU_PLAY_BUTTON_FONT_FAMILY = "Arial";
 const MAIN_MENU_PLAY_BUTTON_TEXT_COLOR = "#fff";
 
 /* WAVE LIST */
-const MEGAWAVE = [0,1,2,3,4,5,6,7,8,9];
+const MEGAWAVE1 = [0,1,2,3,4,5,6,7,8,9];
+const MEGAWAVE2 = [0,1,2,3,4,5,6,7,8,9];
+const MEGAWAVE3 = [0,1,2,3,4,5,6,7,8,9];
+const MEGAWAVE4 = [0,1,2,3,4,5,6,7,8,9];
+const MEGAWAVE5 = [0,1,2,3,4,5,6,7,8,9];
+const MEGAWAVE6 = [0,1,2,3,4,5,6,7,8,9];
+
 
 /* PLAYER VARIABLES */
 const PLAYERLIFE = 50;
@@ -30,5 +36,12 @@ const DEF = 2;
 const WAVEWIDTH = 226;
 const WAVEHEIGHT = 155;
 const WAVESPEED = 2; // -WAVESPEED px toutes les 16 ms
-const WAVELENGTH = 10;
-const DELAY = 7; // 1 va7eur toute les 16*DELAY
+const WAVE_POSITION_UPDATE_TIME = 30 //en ms, periode de mise à jour de la vitesse
+const WAVELENGTH = 10; // nombre
+const WAVE_VALUES_UPDATE_TIME = 1000; // en ms, periode de mise à jour de la valeur
+const WAVE_TEXT_POSX = 50;
+const WAVE_TEXT_POSY = 50;
+const WAVE_FONT_SIZE = '20px';
+const WAVE_FONT_FAMILY = 'arial';
+const WAVE_TEXT_COLOR = '#FF0000';
+const WAVE_TEXT_ALIGN = 'left'
