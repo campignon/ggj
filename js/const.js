@@ -58,3 +58,10 @@ const WAVE_FONT_FAMILY = 'arial';
 const WAVE_TEXT_COLOR = '#FF0000';
 const WAVE_TEXT_ALIGN = 'left'
 const WAVE_RESET_DELAY = 2000;
+const LOCK_WAVE_SELECTION_DELAY = 200;
+
+// Waves states
+const WAVE_DEFAULT = 0;
+const WAVE_SELECTED = 1;
+const WAVE_ACTIVE = 2;
+const WAVE_COOLDOWN = 3;

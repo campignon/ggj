@@ -1,13 +1,12 @@
-var Player = function(game, id, x, y, spriteName, healthBarX, healthBarY, wave1, wave2, wave3, state) {
+var Player = function(game, id, x, y, spriteName, healthBarX, healthBarY, waves, state) {
 
   Phaser.Sprite.call(this, game, x, y, spriteName);
   this.name = spriteName;
   this.life = PLAYERLIFE;
-  this.wave1 = wave1;
-  this.wave2 = wave2;
-  this.wave3 = wave3;
+  this.waves = waves;
   this.state = state;
-  this.currentWave = wave1;
+  this.currentWave = 0;
+  this.canSelectWave = true;
   game.add.sprite(healthBarX, healthBarY, 'healthbar');
 };
 
@@ -21,4 +20,26 @@ Player.prototype.update = function() {
   //check les input
   //mettre à jour les waves
 
+};
+
+Player.prototype.setPreviousWave = function() {
+  if (this.currentWave > 0) {
+    this.currentWave -= 1;
+  } else {
+    this.currentWave = this.waves.length - 1;
+  }
+  console.log("previous wave selected : " + this.currentWave);
+};
+
+Player.prototype.setNextWave = function() {
+  if (this.currentWave < this.waves.length - 1) {
+    this.currentWave += 1;
+  } else {
+    this.currentWave = 0;
+  }
+  console.log("next wave selected : " + this.currentWave);
+};
+
+Player.prototype.getCurrentWave = function() {
+  return this.waves[this.currentWave];
 };
