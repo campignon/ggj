@@ -32,16 +32,16 @@ Scene.prototype.create = function() {
   countdown.start(this);
 
   //création des waves
-  wave1 = new Wave(this, 32, 234, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'waveatk-l', MEGAWAVE1, ATK, 0);
-  wave2 = new Wave(this, 32, 312, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'waveatk-l', MEGAWAVE2, ATK, 0);
-  wave3 = new Wave(this, 32, 392, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'waveatk-l', MEGAWAVE3, ATK, 0);
-  wave4 = new Wave(this, this.world.width - 288, 234, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'waveatk-l', MEGAWAVE4, ATK, 0);
-  wave5 = new Wave(this, this.world.width - 288, 312, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'waveatk-l', MEGAWAVE5, ATK, 0);
-  wave6 = new Wave(this, this.world.width - 288, 392, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'waveatk-l', MEGAWAVE6, ATK, 0);
+  wave1 = new Wave(this, 32, 384, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'waveatk-l', MEGAWAVE1, ATK, 0);
+  wave2 = new Wave(this, 32, 462, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'waveatk-l', MEGAWAVE2, ATK, 0);
+  wave3 = new Wave(this, 32, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'waveatk-l', MEGAWAVE3, ATK, 0);
+  wave4 = new Wave(this, this.world.width - 288, 384, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'waveatk-l', MEGAWAVE4, ATK, 0);
+  wave5 = new Wave(this, this.world.width - 288, 462, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'waveatk-l', MEGAWAVE5, ATK, 0);
+  wave6 = new Wave(this, this.world.width - 288, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'waveatk-l', MEGAWAVE6, ATK, 0);
 
   //création des menus
-  var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 200, [wave1, wave2, wave3]);
-  var menu2 = new PlayerMenu(this, 'movelist-background2', this.world.width - 304, 200, [wave4, wave5, wave6]);
+  var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);
+  var menu2 = new PlayerMenu(this, 'movelist-background2', this.world.width - 304, 350, [wave4, wave5, wave6]);
 
   // Création des healthbars
   var healthbar1 = new Healthbar(this, 1, 0, 0);

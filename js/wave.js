@@ -12,9 +12,9 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px Arial", fill: "#ff0000", align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
   this.addChild(this.valueText);
 
-  this.bigWave = game.add.tileSprite(40, 180, width, height, spriteName);
-  this.bigWave.scale.x = 4;
-  this.bigWave.scale.y = 4;
+  this.bigWave = game.add.tileSprite(WAVE_BIG_POSX, WAVE_BIG_POSY, width, height, spriteName);
+  this.bigWave.scale.x = 4.5;
+  this.bigWave.scale.y = 4.5;
   this.bigWave.visible = false;
 
   // var style = { font: "32px Arial", fill: "#ff0000", align: "center" };
@@ -103,7 +103,7 @@ Wave.prototype.update = function() {
   this.valueText.text = this.actualValue;
 
   if(this.state == WAVE_SELECTED || this.state == WAVE_ACTIVE) {
-    
+
     this.bigWave.visible = true;
     this.bigWave.alpha = 1;
 
