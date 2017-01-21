@@ -19,9 +19,11 @@ Preloader.prototype.preload = function() {
   // Loading assets
   this.load.image('playButton', 'assets/images/playButton.png');
   this.load.image('timer', 'assets/images/timer.png');
-  this.load.image('healthbar', 'assets/images/healthbar.png');
+  this.load.spritesheet('healthbar', 'assets/sprites/barredevie.png', 540,48);
   this.load.image('player1', 'assets/sprites/player1.png');
   this.load.image('player2', 'assets/sprites/player2.png');
+  this.load.image('overlay', 'assets/sprites/overlay.png');
+  this.load.image('ground', 'assets/sprites/ground.png');
   this.load.spritesheet('megawave', 'assets/sprites/waveatk.png', WAVEWIDTH, WAVEHEIGHT, 2);
 };
 
