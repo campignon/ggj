@@ -43,10 +43,13 @@ Healthbar.prototype.removeLife = function(value) {
   this.currentLife -= value;
 }
 
-Healthbar.prototype.displayHealthbar = function() {
+Healthbar.prototype.updateHealth = function(health) {
 
   if(this.oldCurrentLife != this.currentLife) {
     this.oldCurrentLife = this.currentLife;
+
+    this.lifeText.setText(this.currentLife);
+
     var healthsize = (HEALTH_BAR_WIDTH*this.currentLife)/this.totalLife;
     this.cropRect.width = healthsize;
     this.bar.crop(this.cropRect);
@@ -55,11 +58,7 @@ Healthbar.prototype.displayHealthbar = function() {
     } else {
       this.bar.x = this.healthBarX - (HEALTH_BAR_WIDTH-healthsize);
     }
+
   }
-}
-
-Healthbar.prototype.updateHealth = function() {
-
-  this.displayHealthbar();
 
 };
