@@ -29,6 +29,7 @@ Player.prototype.setPreviousWave = function() {
     this.currentWave -= 1;
   } else {
     this.currentWave = this.menu.waves.length - 1;
+
   }
   this.getCurrentWave().setState(WAVE_SELECTED);
   console.log("previous wave selected : " + this.currentWave);

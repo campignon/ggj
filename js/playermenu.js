@@ -7,9 +7,5 @@ var PlayerMenu = function(game, background, x, y, waves) {
 
 }
 
-PlayerMenu.prototype.update = function() {
-
-};
-
 PlayerMenu.prototype = Object.create(Phaser.Sprite.prototype);
 PlayerMenu.prototype.constructor = PlayerMenu;
