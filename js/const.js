@@ -28,7 +28,8 @@ const COUNTDOWN_TEXT_SHADOW_BLUR = 7;
 const HEALTH_BAR_WIDTH = 540;
 
 /* Wave list */
-const MEGAWAVE1 = [0,1,2,3,4,5,6,7,8,9];
+const TRIANGLE = [9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0,0,1,1,2,2,3,4,4,5,5,6,7,7,8,8,9,
+  9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0,0,1,1,2,2,3,4,4,5,5,6,7,7,8,8,9];
 const MEGAWAVE2 = [0,1,2,3,4,5,6,7,8,9];
 const MEGAWAVE3 = [0,1,2,3,4,5,6,7,8,9];
 const MEGAWAVE4 = [0,1,2,3,4,5,6,7,8,9];
@@ -51,8 +52,9 @@ const ATK = 1;
 const DEF = 2;
 const WAVEWIDTH = 256;
 const WAVEHEIGHT = 40;
-const WAVESPEED = 2; // -WAVESPEED px toutes les 16 ms
-const WAVE_POSITION_UPDATE_TIME = 30 //en ms, periode de mise à jour de la vitesse
+const FRAMESTEP = 4;
+const FRAMECOUNTSTEP = 3; // -WAVESPEED px toutes les 16 ms
+const WAVE_POSITION_UPDATE_TIME = 30; //en ms, periode de mise à jour de la vitesse
 const WAVELENGTH = 10; // nombre
 const WAVE_VALUES_UPDATE_TIME = 1000; // en ms, periode de mise à jour de la valeur
 const WAVE_TEXT_POSX = 50;

@@ -2,7 +2,6 @@ var Healthbar = function(game, id, healthBarX, healthBarY) {
   this.bar = game.add.sprite(healthBarX, healthBarY, 'healthbar');
   this.scoreText;
   this.id = id;
-  this.rectangle = new Rectangle(0, 0, HEALTH_BAR_WIDTH, 100);
 
   if(id==2) {
     this.bar.scale.x *= -1;
