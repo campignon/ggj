@@ -24,8 +24,10 @@ Preloader.prototype.preload = function() {
   this.load.image('player2', 'assets/sprites/player2.png');
   this.load.image('overlay', 'assets/sprites/overlay.png');
   this.load.image('ground', 'assets/sprites/ground.png');
+  this.load.image('plan2', 'assets/sprites/plan2.png');
   this.load.image('movelist-background1', 'assets/sprites/movelist-background1.png');
   this.load.image('movelist-background2', 'assets/sprites/movelist-background2.png');
+  this.load.spritesheet('arene', 'assets/sprites/arene.png', 344, 124, 24);
   this.load.spritesheet('courbe1', 'assets/sprites/courbe1.png', WAVEWIDTH, WAVEHEIGHT, 4);
   this.load.spritesheet('courbe2', 'assets/sprites/courbe2.png', WAVEWIDTH, WAVEHEIGHT, 4);
   this.load.spritesheet('courbe3', 'assets/sprites/courbe3.png', WAVEWIDTH, WAVEHEIGHT, 4);

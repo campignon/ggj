@@ -12,6 +12,11 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px Arial", fill: "#ff0000", align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
   this.addChild(this.valueText);
 
+  this.bigWave = game.add.tileSprite(40, 180, width, height, spriteName);
+  this.bigWave.scale.x = 4;
+  this.bigWave.scale.y = 4;
+  this.bigWave.visible = false;
+
   // var style = { font: "32px Arial", fill: "#ff0000", align: "center" };
   // var text = this.game.add.text(x, y+height, "- text on a sprite -\ndrag me", style);
 
@@ -29,6 +34,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
     //update position
     this.loopPosition = game.time.events.loop(WAVE_POSITION_UPDATE_TIME, function() {
       this.tilePosition.x -= WAVESPEED;
+      this.bigWave.tilePosition.x -= WAVESPEED;
 
     }, this);
 
@@ -38,6 +44,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
     this.cpt = 0;
     this.actualValue = this.values[this.cpt];
     this.tilePosition.x = 0;
+    this.bigWave.tilePosition.x = 0
     this.setState(WAVE_COOLDOWN);
   }
 
@@ -92,5 +99,24 @@ Wave.prototype = Object.create(Phaser.TileSprite.prototype);
 Wave.prototype.constructor = Wave;
 
 Wave.prototype.update = function() {
+
   this.valueText.text = this.actualValue;
+
+  if(this.state == WAVE_SELECTED || this.state == WAVE_ACTIVE) {
+    
+    this.bigWave.visible = true;
+    this.bigWave.alpha = 1;
+
+  } else if (this.state == WAVE_COOLDOWN) {
+
+    this.bigWave.visible = true;
+    this.bigWave.alpha = 0.5;
+
+  } else {
+
+    this.bigWave.visible = false;
+    this.bigWave.alpha = 1;
+
+  }
+
 }
