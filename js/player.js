@@ -8,6 +8,7 @@ var Player = function(game, id, x, y, spriteName, healthbar, menu, state) {
   this.canSelectWave = true;
   this.menu = menu;
   this.healthbar = healthbar;
+  this.healthbar.initHealth(game, PLAYERLIFE);
   this.getCurrentWave().setState(WAVE_SELECTED);
 };
 
