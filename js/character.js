@@ -1,6 +1,7 @@
 Player = function(game, x, y, spriteName, wave1, wave2, wave3, state) {
 
   Phaser.Sprite.call(this, game,x,y,spriteName);
+  this.name = spriteName;
   this.life = PLAYERLIFE;
   this.wave1 = wave1;
   this.wave2 = wave2;
