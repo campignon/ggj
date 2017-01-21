@@ -14,8 +14,8 @@ Wave = function(game, x, y, width, height, name, spriteName, largeSpriteName, va
 
   this.startTimer = function() {
 
-    game.time.events.loop(Phaser.Timer.SECOND, updateValues, this);
-    game.time.events.loop(Phaser.Timer.SECOND, updateMove, this);
+    //game.time.events.loop(Phaser.Timer.SECOND, updateValues, this);
+    //game.time.events.loop(Phaser.Timer.SECOND, updateMove, this);
 
   }
   this.startTimer();

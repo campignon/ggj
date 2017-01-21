@@ -1,3 +1,19 @@
+// Preloader
+const PRELOADER_BACKGROUND = "#29ADFF";
+const PRELOADER_LOGO_SCALE_FACTOR = 3;
+
+// Main menu
+const MAIN_MENU_PLAY_BUTTON_WIDTH = 300;
+const MAIN_MENU_PLAY_BUTTON_HEIGHT = 100;
+const MAIN_MENU_LOGO_SCALE_FACTOR = 3;
+const MAIN_MENU_PLAY_BUTTON_OFFSET_Y = 250;
+const MAIN_MENU_PLAY_BUTTON_FONT_SIZE = "14px";
+const MAIN_MENU_PLAY_BUTTON_FONT_FAMILY = "Arial";
+const MAIN_MENU_PLAY_BUTTON_TEXT_COLOR = "#fff";
+
+/* WAVE LIST */
+const MEGAWAVE = [0,1,2,3,4,5,6,7,8,9];
+
 /* PLAYER VARIABLES */
 const PLAYERLIFE = 50;
 const PLAYER1X = 0;
@@ -16,8 +32,3 @@ const WAVEHEIGHT = 155;
 const WAVESPEED = 2; // -WAVESPEED px toutes les 16 ms
 const WAVELENGTH = 10;
 const DELAY = 7; // 1 va7eur toute les 16*DELAY
-
-
-
-/* WAVE LIST */
-const MEGAWAVE = [0,1,2,3,4,5,6,7,8,9];
