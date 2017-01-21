@@ -49,7 +49,12 @@ const PLAYER1X = 284;
 const PLAYER1Y = 400;
 const PLAYER2X = 700;
 const PLAYER2Y = 400;
-
+const PLAYER_NAME_FONT_SIZE = "24px";
+const PLAYER_NAME_FONT_FAMILY = "uni0553";
+const PLAYER_NAME_TEXT_COLOR = "#fff";
+const LIFE_FONT_SIZE = "32px";
+const LIFE_FONT_FAMILY = "uni0553";
+const LIFE_TEXT_COLOR = "#fff";
 
 /* Waves variables */
 const LARGESPRITEX = 0;
