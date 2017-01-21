@@ -25,8 +25,8 @@ Scene.prototype.create = function() {
   var wave6 = new Wave(this, 1050, 600, WAVEWIDTH, WAVEHEIGHT, 'megawave', 'waveatk-l', MEGAWAVE6, ATK, false, 0);
 
   // création des personnages
-  var player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', 0, 0, null, null, null, 1);
-  var player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', this.world.width - HEALTH_BAR_WIDTH, 0, null, null, null, 1);
+  player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', 0, 0, null, null, null, 1);
+  player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', this.world.width - HEALTH_BAR_WIDTH, 0, null, null, null, 1);
 
   this.add.existing(player1);
   this.add.existing(player2);
@@ -45,7 +45,7 @@ Scene.prototype.create = function() {
   //lancement des timers du jeu
   wave1.startTimer();
   wave2.startTimer();
-  
+
 };
 
 Scene.prototype.update = function() {
@@ -56,6 +56,7 @@ Scene.prototype.update = function() {
     //player1.currentWave.resetTimer();
     resetWave(wave1);
   }
+
   if (pad2.justReleased(Phaser.Gamepad.XBOX360_X)) {
     //player2.currentWave.resetTimer();
     resetWave(wave2);
@@ -64,9 +65,24 @@ Scene.prototype.update = function() {
   //bouton pour activer la wave
   if (pad1.isDown(Phaser.Gamepad.XBOX360_A)) {
     //on récupère la wave active du joueur en question et on calcul par rapport à la valeur du joueur adverse
-    wave1.animations.frame = 1;
+    if (!wave1.isActive) {
+      wave1.setActive();
+    }
   } else {
-    wave1.animations.frame = 0;
+    if (wave1.isActive) {
+      wave1.setInactive();
+    }
+  }
+
+  if (pad2.isDown(Phaser.Gamepad.XBOX360_A)) {
+    //on récupère la wave active du joueur en question et on calcul par rapport à la valeur du joueur adverse
+    if (!wave2.isActive) {
+      wave2.setActive();
+    }
+  } else {
+    if (wave2.isActive) {
+      wave2.setInactive();
+    }
   }
 
   if (pad1.justPressed(Phaser.Gamepad.XBOX360_B)) {
@@ -84,6 +100,5 @@ function resetWave(wave) {
       resetDelay = true;
       clearTimeout(timeout);
     }, WAVE_RESET_DELAY);
-
   }
-}
+};

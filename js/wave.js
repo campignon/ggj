@@ -11,6 +11,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.type = type;
   this.cpt = 0;
   this.actualValue = actualValue;
+  this.isActive = false;
   this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px Arial", fill: "#ff0000", align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
   this.addChild(this.valueText);
 
@@ -48,6 +49,18 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
     game.time.events.remove(this.loopPosition);
     game.time.events.remove(this.loopValues);
 
+  }
+
+  this.setActive = function() {
+    this.isActive = true;
+    this.animations.frame = 1;
+    console.log("active");
+  }
+
+  this.setInactive = function() {
+    this.isActive = false;
+    this.animations.frame = 0;
+    console.log("inactive");
   }
 
 }
