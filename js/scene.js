@@ -17,9 +17,16 @@ Scene.prototype.create = function() {
   var ground = this.add.sprite(0, 0, 'ground');
   this.add.existing(ground);
 
+  var plan2 = this.add.sprite(40, this.world.height - 292, 'plan2');
+  this.add.existing(plan2);
+
+  var arene = this.add.sprite(448, this.world.height - 157, 'arene');
+  this.add.existing(arene);
+  arene.animations.add('walk');
+  arene.animations.play('walk', 12, true);
+
   var overlay = this.add.sprite(0, 0, 'overlay');
   this.add.existing(overlay);
-
 
   var countdown = new Countdown(this, DURATION);
   countdown.start(this);
@@ -126,10 +133,6 @@ Scene.prototype.update = function() {
     //player2.currentWave.resetTimer();
     resetWave(player2.getCurrentWave());
   }
-
-  // if (pad1.justPressed(Phaser.Gamepad.XBOX360_B)) {
-  //   wave1.stopTimer();
-  // }
 
 }
 
