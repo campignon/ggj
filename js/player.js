@@ -20,7 +20,7 @@ Player.prototype.constructor = Player;
 
 Player.prototype.update = function() {
 
-  updateHealthBar();
+  //this.updateHealthBar();
 
   //mises à jours par joueur
   // - mettre à jour les points de vie
