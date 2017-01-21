@@ -21,10 +21,12 @@ Countdown.prototype.start = function(game) {
 };
 
 Countdown.prototype.update = function() {
-  currentTime -= 1;
-  countdownText.setText(currentTime);
+  if (currentTime > 0) {
+    currentTime -= 1;
+    countdownText.setText(currentTime);
 
-  if (currentTime == 0) {
+    if (currentTime == 0) {
     // End game
+    }
   }
 };
