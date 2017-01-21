@@ -13,6 +13,14 @@ Scene.prototype.preload = function() {
 
 Scene.prototype.create = function() {
 
+
+  var ground = this.add.sprite(0, 0, 'ground');
+  this.add.existing(ground);
+
+  var overlay = this.add.sprite(0, 0, 'overlay');
+  this.add.existing(overlay);
+
+
   var countdown = new Countdown(this, DURATION);
   countdown.start(this);
 
@@ -25,7 +33,7 @@ Scene.prototype.create = function() {
 
   // création des personnages
   player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', 0, 0, [wave1, wave2, wave3], 1);
-  player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', this.world.width - HEALTH_BAR_WIDTH, 0, [wave4, wave5, wave6], 1);
+  player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', this.world.width, 0, [wave4, wave5, wave6], 1);
 
   this.add.existing(player1);
   this.add.existing(player2);
@@ -41,10 +49,10 @@ Scene.prototype.create = function() {
   pad1 = this.input.gamepad.pad1;
   pad2 = this.input.gamepad.pad2;
 
+  startGame();
   //lancement des timers du jeu
   wave1.startTimer();
   wave2.startTimer();
-
 };
 
 Scene.prototype.update = function() {
@@ -110,6 +118,11 @@ Scene.prototype.update = function() {
   // if (pad1.justPressed(Phaser.Gamepad.XBOX360_B)) {
   //   wave1.stopTimer();
   // }
+
+}
+
+function startGame() {
+
 
 }
 

@@ -21,7 +21,7 @@ const COUNTDOWN_FONT_FAMILY = "uni0553";
 const COUNTDOWN_TEXT_COLOR = "#ff0000";
 
 /* Health bar */
-const HEALTH_BAR_WIDTH = 450;
+const HEALTH_BAR_WIDTH = 540;
 
 /* Wave list */
 const MEGAWAVE1 = [0,1,2,3,4,5,6,7,8,9];
@@ -34,10 +34,10 @@ const MEGAWAVE6 = [0,1,2,3,4,5,6,7,8,9];
 
 /* Player variables */
 const PLAYERLIFE = 50;
-const PLAYER1X = 300;
-const PLAYER1Y = 500;
-const PLAYER2X = 300;
-const PLAYER2Y = 500;
+const PLAYER1X = 284;
+const PLAYER1Y = 400;
+const PLAYER2X = 700;
+const PLAYER2Y = 400;
 
 
 /* Waves variables */
