@@ -100,8 +100,8 @@ Wave.prototype.constructor = Wave;
 Wave.prototype.update = function() {
 
   if (this.cpt % FRAMECOUNTSTEP == 0) {
-    this.tilePosition.x -= 4;
-    this.bigWave.tilePosition.x -= 4;
+    this.tilePosition.x -= FRAMESTEP;
+    this.bigWave.tilePosition.x -= FRAMESTEP;
     this.actualValue = this.values[this.valueIndex % this.values.length];
     this.valueText.text = this.actualValue;
     this.valueIndex++;

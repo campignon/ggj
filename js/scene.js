@@ -33,11 +33,11 @@ Scene.prototype.create = function() {
 
   //création des waves
   wave1 = new Wave(this, 32, 384, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'waveatk-l', TRIANGLE, ATK);
-  wave2 = new Wave(this, 32, 462, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'waveatk-l', MEGAWAVE2, ATK);
-  wave3 = new Wave(this, 32, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'waveatk-l', MEGAWAVE3, ATK);
-  wave4 = new Wave(this, this.world.width - 288, 384, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'waveatk-l', MEGAWAVE4, ATK);
-  wave5 = new Wave(this, this.world.width - 288, 462, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'waveatk-l', MEGAWAVE5, ATK);
-  wave6 = new Wave(this, this.world.width - 288, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'waveatk-l', MEGAWAVE6, ATK);
+  wave2 = new Wave(this, 32, 462, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'waveatk-l', CARRE, ATK);
+  wave3 = new Wave(this, 32, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'waveatk-l', SINUS, ATK);
+  wave4 = new Wave(this, this.world.width - 288, 384, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'waveatk-l', SAW, ATK);
+  wave5 = new Wave(this, this.world.width - 288, 462, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'waveatk-l', SMALLSAW, ATK);
+  wave6 = new Wave(this, this.world.width - 288, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'waveatk-l', SMALLSINUS, ATK);
 
   //création des menus
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);

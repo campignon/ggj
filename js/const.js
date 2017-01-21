@@ -30,11 +30,16 @@ const HEALTH_BAR_WIDTH = 540;
 /* Wave list */
 const TRIANGLE = [9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0,0,1,1,2,2,3,4,4,5,5,6,7,7,8,8,9,
   9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0,0,1,1,2,2,3,4,4,5,5,6,7,7,8,8,9];
-const MEGAWAVE2 = [0,1,2,3,4,5,6,7,8,9];
-const MEGAWAVE3 = [0,1,2,3,4,5,6,7,8,9];
-const MEGAWAVE4 = [0,1,2,3,4,5,6,7,8,9];
-const MEGAWAVE5 = [0,1,2,3,4,5,6,7,8,9];
-const MEGAWAVE6 = [0,1,2,3,4,5,6,7,8,9];
+const CARRE = [9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,9,9,
+  9,9,9,9,9,9,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0];
+const SINUS = [9,9,9,9,8,8,7,6,4,2,1,1,0,0,0,0,0,0,0,0,1,1,2,4,6,7,8,8,9,9,9,9,
+  9,9,9,9,8,8,7,6,4,2,1,1,0,0,0,0,0,0,0,0,1,1,2,4,6,7,8,8,9,9,9,9];
+const SAW = [9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0,9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0,
+  9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0,9,8,8,7,7,6,5,5,4,4,3,2,2,1,1,0];
+const SMALLSAW = [0,5,4,4,3,2,2,1,1,5,4,4,3,2,2,1,1,5,4,4,3,2,2,1,1,5,4,4,3,2,2,1,1,
+  5,4,4,3,2,2,1,1,5,4,4,3,2,2,1,1,5,4,4,3,2,2,1,1,5,4,4,3,2,2,1];
+const SMALLSINUS = [5,5,4,3,2,1,0,0,0,0,1,2,3,4,5,5,5,5,4,3,2,1,0,0,0,0,1,2,3,4,5,5,
+  5,5,4,3,2,1,0,0,0,0,1,2,3,4,5,5,5,5,4,3,2,1,0,0,0,0,1,2,3,4,5,5];
 
 
 /* Player variables */
@@ -53,10 +58,7 @@ const DEF = 2;
 const WAVEWIDTH = 256;
 const WAVEHEIGHT = 40;
 const FRAMESTEP = 4;
-const FRAMECOUNTSTEP = 3; // -WAVESPEED px toutes les 16 ms
-const WAVE_POSITION_UPDATE_TIME = 30; //en ms, periode de mise à jour de la vitesse
-const WAVELENGTH = 10; // nombre
-const WAVE_VALUES_UPDATE_TIME = 1000; // en ms, periode de mise à jour de la valeur
+const FRAMECOUNTSTEP = 50; // On avance de 1 groupe de FRAMESTEP pixels toutes les FRAMECOUNTSTEP frames
 const WAVE_TEXT_POSX = 50;
 const WAVE_TEXT_POSY = 50;
 const WAVE_FONT_SIZE = '20px';
