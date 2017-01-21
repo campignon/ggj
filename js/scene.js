@@ -44,8 +44,8 @@ Scene.prototype.create = function() {
   var menu2 = new PlayerMenu(this, 'movelist-background2', this.world.width - 304, 350, [wave4, wave5, wave6]);
 
   // Création des healthbars
-  var healthbar1 = new Healthbar(this, 1, 0, 0);
-  var healthbar2 = new Healthbar(this, 2, this.world.width, 0);
+  var healthbar1 = new Healthbar(this, 1, 0, 0, PLAYERLIFE);
+  var healthbar2 = new Healthbar(this, 2, this.world.width, 0,PLAYERLIFE);
 
   // création des personnages
   player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', healthbar1, menu1, 1);
