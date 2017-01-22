@@ -12,6 +12,7 @@ var Player = function(game, id, x, y, spriteName, healthbar, menu) {
   this.actions = null;
   this.getCurrentWave().setState(WAVE_SELECTED);
   this.animations.frame = 0;
+  this.id = id;
 
   this.wait = this.animations.add('wait', [0,1]);
   this.wait = this.animations.add('weakhit', [14,15,16,17]);

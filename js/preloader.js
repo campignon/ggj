@@ -22,6 +22,7 @@ Preloader.prototype.preload = function() {
   this.load.spritesheet('healthbar', 'assets/sprites/barredevie.png', 540,48);
   this.load.spritesheet('player1', 'assets/sprites/p1.png', 296, 256, 18);
   this.load.spritesheet('player2', 'assets/sprites/p2.png', 296, 256, 18);
+  this.load.spritesheet('title', 'assets/sprites/titre.png', 1280,720, 4);
   this.load.image('overlay', 'assets/sprites/overlay.png');
   this.load.image('ground', 'assets/sprites/ground.png');
   this.load.image('plan2', 'assets/sprites/plan2.png');

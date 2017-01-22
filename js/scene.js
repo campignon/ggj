@@ -15,6 +15,7 @@ Scene.prototype.preload = function() {
 Scene.prototype.create = function() {
 
 
+
   var ground = this.add.sprite(0, 0, 'ground');
   this.add.existing(ground);
 
@@ -46,7 +47,6 @@ Scene.prototype.create = function() {
   animChangeDroite.animations.add('walk');
 
   var countdown = new Countdown(this.game, this, DURATION);
-  countdown.start(this.game);
 
   //création des waves
   wave1 = new Wave(this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
@@ -81,6 +81,16 @@ Scene.prototype.create = function() {
   this.add.existing(wave4);
   this.add.existing(wave5);
   this.add.existing(wave6);
+
+
+  // var imgRebour1 = this.add.sprite(0, 0, 'Player ' + id, playerNameTextSettings);
+  // var imgRebour1 = this.add.sprite(0, 0, 'Player ' + id, playerNameTextSettings);
+  // var imgRebour1 = this.add.sprite(0, 0, 'Player ' + id, playerNameTextSettings);
+  // var imgRebour1 = this.add.sprite(0, 0, 'Player ' + id, playerNameTextSettings);
+
+
+  //lancement du timer de la partie
+  countdown.start(this.game);
 
   //gestion manette
   this.input.gamepad.start();
@@ -185,12 +195,13 @@ function resetWave(player) {
 };
 
 function lockWaveSelection(player) {
+
   if (player.canSelectWave) {
     player.canSelectWave = false;
     if(player.id == 1) {
-      animChangeDroite.play('walk', 12, false);
-    } else {
       animChangeGauche.play('walk', 12, false);
+    } else {
+      animChangeDroite.play('walk', 12, false);
     }
 
     var timeout = setTimeout(function() {
