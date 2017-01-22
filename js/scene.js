@@ -1,4 +1,6 @@
-var Scene = function() {};
+var Scene = function() {
+  this.controlsEnabled = false;
+};
 
 var pad1;
 var pad2;
@@ -6,14 +8,13 @@ var player1;
 var player2;
 var wave1, wave2, wave3, wave4, wave5, wave6;
 var animChangeGauche, animChangeDroite;
+var countdown;
 
 Scene.prototype.preload = function() {
 
 };
 
 Scene.prototype.create = function() {
-
-
 
   var ground = this.add.sprite(0, 0, 'ground');
   this.add.existing(ground);
@@ -45,15 +46,15 @@ Scene.prototype.create = function() {
   this.add.existing(animChangeDroite);
   animChangeDroite.animations.add('walk');
 
-  var countdown = new Countdown(this.game, this, DURATION);
+  countdown = new Countdown(this.game, this, DURATION);
 
   //création des waves
-  wave1 = new Wave(this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
-  wave2 = new Wave(this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
-  wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0xff00ff);
-  wave4 = new Wave(this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
-  wave5 = new Wave(this, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0x84e7ff);
-  wave6 = new Wave(this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
+  wave1 = new Wave(this.game, this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
+  wave2 = new Wave(this.game, this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
+  wave3 = new Wave(this.game, this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0xff00ff);
+  wave4 = new Wave(this.game, this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
+  wave5 = new Wave(this.game, this, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0x84e7ff);
+  wave6 = new Wave(this.game, this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
 
   //création des menus
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);
@@ -105,6 +106,8 @@ Scene.prototype.create = function() {
 };
 
 Scene.prototype.update = function() {
+  if (!this.controlsEnabled) return;
+
   // bouton changer pour la wave précédente pour le joueur 1
   if (pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1 && player1.canSelectWave) {
     player1.setPreviousWave();
@@ -173,15 +176,22 @@ Scene.prototype.update = function() {
 };
 
 Scene.prototype.gameOver = function(id) {
-  console.log("Game over !");
-  var graphicOverlay = new Phaser.Graphics(this.game, 0 , 0);
-  graphicOverlay.beginFill(0x000000, 0.7);
-  graphicOverlay.drawRect(0,0, this.game.width, this.game.height);
-  graphicOverlay.endFill();
-  var sceneOverlay = graphicOverlay.generateTexture();
-  var overlay = this.game.add.sprite(0, 0, sceneOverlay);
-  overlay.alpha = 0;
-  this.game.add.tween(overlay).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0);
+  if (!this.isGameOver) {
+    console.log("Game over !");
+    this.controlsEnabled = false;
+    countdown.stop(this.game);
+    player1.stop();
+    player2.stop();
+    wave1.active = wave2.active = wave3.active = wave4.active = wave5.active = wave6.active = false;
+    var graphicOverlay = new Phaser.Graphics(this.game, 0 , 0);
+    graphicOverlay.beginFill(0x000000, 0.7);
+    graphicOverlay.drawRect(0,0, this.game.width, this.game.height);
+    graphicOverlay.endFill();
+    var sceneOverlay = graphicOverlay.generateTexture();
+    var overlay = this.game.add.sprite(0, 0, sceneOverlay);
+    overlay.alpha = 0;
+    this.game.add.tween(overlay).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0);
+  }
 };
 
 function resetWave(player) {

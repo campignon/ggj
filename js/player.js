@@ -122,3 +122,8 @@ var action = function(player, opponent) {
     player.healthbar.addLife(heal);
   }
 };
+
+Player.prototype.stop = function() {
+  console.log("player " + this.id + " stop");
+  this.animations.stop();
+};

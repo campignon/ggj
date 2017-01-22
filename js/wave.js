@@ -10,6 +10,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.valueIndex = 0;
   this.actualValue = values[0];
   this.state = WAVE_DEFAULT;
+  this.active = false;
   this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px Arial", fill: "#ff0000", align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
   this.addChild(this.valueText);
 
@@ -66,6 +67,8 @@ Wave.prototype = Object.create(Phaser.TileSprite.prototype);
 Wave.prototype.constructor = Wave;
 
 Wave.prototype.update = function() {
+
+  if (!this.active) return;
 
   if (this.cpt % FRAMECOUNTSTEP == 0) {
     this.tilePosition.x -= FRAMESTEP;

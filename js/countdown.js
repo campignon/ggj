@@ -3,6 +3,7 @@ var countdownText;
 
 var Countdown = function(game, scene, duration) {
   this.scene = scene;
+  this.timer = null;
 
   var countdownSprite = game.add.sprite(game.world.centerX, 0, 'timer');
   countdownSprite.anchor.setTo(0.5, 0);
@@ -22,7 +23,7 @@ var Countdown = function(game, scene, duration) {
 
 Countdown.prototype.start = function(game) {
   console.log("start timer");
-  game.time.events.loop(1000, this.update, this);
+  this.timer = game.time.events.loop(1000, this.update, this);
 };
 
 Countdown.prototype.update = function() {
@@ -35,4 +36,8 @@ Countdown.prototype.update = function() {
       this.scene.gameOver(0);
     }
   }
+};
+
+Countdown.prototype.stop = function(game) {
+  game.time.events.remove(this.timer);
 };
