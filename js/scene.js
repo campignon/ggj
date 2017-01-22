@@ -1,5 +1,6 @@
 var Scene = function() {
   this.controlsEnabled = false;
+  this.isGameOver = false;
 };
 
 var pad1;
@@ -9,6 +10,8 @@ var player2;
 var wave1, wave2, wave3, wave4, wave5, wave6;
 var animChangeGauche, animChangeDroite;
 var countdown;
+var sceneOverlay;
+var music;
 
 Scene.prototype.preload = function() {
 
@@ -49,12 +52,12 @@ Scene.prototype.create = function() {
   countdown = new Countdown(this.game, this, DURATION);
 
   //création des waves
-  wave1 = new Wave(this.game, this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
-  wave2 = new Wave(this.game, this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
-  wave3 = new Wave(this.game, this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0xff00ff);
-  wave4 = new Wave(this.game, this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
-  wave5 = new Wave(this.game, this, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0x84e7ff);
-  wave6 = new Wave(this.game, this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
+  wave1 = new Wave(this.game, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
+  wave2 = new Wave(this.game, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
+  wave3 = new Wave(this.game, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0xff00ff);
+  wave4 = new Wave(this.game, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
+  wave5 = new Wave(this.game, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0x84e7ff);
+  wave6 = new Wave(this.game, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
 
   //création des menus
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);
@@ -82,27 +85,84 @@ Scene.prototype.create = function() {
   this.add.existing(wave5);
   this.add.existing(wave6);
 
+  var graphicOverlay = new Phaser.Graphics(this.game, 0 , 0);
+  graphicOverlay.beginFill(0x000000, 0.7);
+  graphicOverlay.drawRect(0,0, this.game.width, this.game.height);
+  graphicOverlay.endFill();
+  var overlayTexture = graphicOverlay.generateTexture();
+  sceneOverlay = this.game.add.sprite(0, 0, overlayTexture);
+  overlay.alpha = 1;
 
-  // var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
-  // var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
-  // var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
-  // var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+  //
+  var imgRebour1 = this.add.sprite(this.world.width/2, this.world.height/2, 'playButton');
+  imgRebour1.anchor.setTo(0.5, 0.5);
+  imgRebour1.scale.setTo(0.1,0.1);
 
+  var imgRebour2 = this.add.sprite(this.world.width/2, this.world.height/2, 'playButton');
+  imgRebour2.anchor.setTo(0.5, 0.5);
+  imgRebour2.scale.setTo(0.1,0.1);
+  imgRebour2.visible = false;
 
+  var imgRebour3 = this.add.sprite(this.world.width/2, this.world.height/2, 'playButton');
+  imgRebour3.anchor.setTo(0.5, 0.5);
+  imgRebour3.scale.setTo(0.1,0.1);
+  imgRebour3.visible = false;
 
-  //lancement du timer de la partie
-  countdown.start(this.game);
+  var imgRebour4 = this.add.sprite(this.world.width/2, this.world.height/2, 'playButton');
+  imgRebour4.anchor.setTo(0.5, 0.5);
+  imgRebour4.scale.setTo(0.1,0.1);
+  imgRebour4.visible = false;
 
-  //gestion manette
-  this.input.gamepad.start();
+  var tween1 = this.game.add.tween(imgRebour1.scale).to( { x: 1, y: 1}, 1000, "Quart.easeOut");
+  var tween2 = this.game.add.tween(imgRebour2.scale).to( { x: 1, y: 1}, 1000, "Quart.easeOut");
+  var tween3 = this.game.add.tween(imgRebour3.scale).to( { x: 1, y: 1}, 1000, "Quart.easeOut");
+  var tween4 = this.game.add.tween(imgRebour4.scale).to( { x: 1, y: 1}, 1000, "Quart.easeOut");
+
+  tween1.onComplete.add(function() {
+    imgRebour2.visible = true;
+    imgRebour1.visible = false;
+    tween2.start();
+
+  }, this);
+
+  tween2.onComplete.add(function() {
+    imgRebour3.visible = true;
+    imgRebour2.visible = false;
+    tween3.start();
+
+  }, this);
+
+  tween3.onComplete.add(function() {
+    imgRebour4.visible = true;
+    imgRebour3.visible = false;
+    tween4.start();
+
+  }, this);
+
+  var leThis = this;
+  tween4.onComplete.add(function() {
+
+    imgRebour4.visible = false;
+    sceneOverlay.alpha = 0;
+    //lancement du timer de la partie
+    countdown.start(this.game);
+    wave1.active = wave2.active = wave3.active = wave4.active = wave5.active = wave6.active = true;
+
+    //gestion manette
+    leThis.input.gamepad.start();
+    this.controlsEnabled = true;
+    music.play();
+
+  }, this);
+
   pad1 = this.input.gamepad.pad1;
   pad2 = this.input.gamepad.pad2;
 
-  console.log("music init");
-  var music = this.add.audio('theme');
+  music = this.add.audio('theme');
   music.loop = true;
-  music.play();
-  console.log("music initialized");
+
+  tween1.start();
+
 };
 
 Scene.prototype.update = function() {
@@ -178,19 +238,13 @@ Scene.prototype.update = function() {
 Scene.prototype.gameOver = function(id) {
   if (!this.isGameOver) {
     console.log("Game over !");
+    this.isGameOver = true;
     this.controlsEnabled = false;
     countdown.stop(this.game);
     player1.stop();
     player2.stop();
     wave1.active = wave2.active = wave3.active = wave4.active = wave5.active = wave6.active = false;
-    var graphicOverlay = new Phaser.Graphics(this.game, 0 , 0);
-    graphicOverlay.beginFill(0x000000, 0.7);
-    graphicOverlay.drawRect(0,0, this.game.width, this.game.height);
-    graphicOverlay.endFill();
-    var sceneOverlay = graphicOverlay.generateTexture();
-    var overlay = this.game.add.sprite(0, 0, sceneOverlay);
-    overlay.alpha = 0;
-    this.game.add.tween(overlay).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0);
+    this.game.add.tween(sceneOverlay).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0);
   }
 };
 
