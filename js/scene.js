@@ -89,6 +89,9 @@ Scene.prototype.create = function() {
   player2.startPlayerActions(player2, player1);
   console.log("players initialized !");
 
+  var music = this.add.audio('theme');
+  music.loop = true;
+  music.play();
 };
 
 Scene.prototype.update = function() {
