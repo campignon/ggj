@@ -1,7 +1,7 @@
 var Booter = function() {};
 
 Booter.prototype.preload = function() {
-  this.load.image('logo', 'assets/sprites/title.png');
+  this.load.image('title', 'assets/sprites/titre.png');
   this.load.image('preloadbar', 'assets/sprites/preloader-bar.png');
 
   // No antialiasing

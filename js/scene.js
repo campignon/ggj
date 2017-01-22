@@ -83,10 +83,10 @@ Scene.prototype.create = function() {
   this.add.existing(wave6);
 
 
-  var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
-  var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
-  var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
-  var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+  // var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+  // var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+  // var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+  // var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
 
 
 
@@ -150,7 +150,7 @@ Scene.prototype.update = function() {
       player2.setWaveState(WAVE_ACTIVE);
     }
     player2.updateAnimation();
-    
+
   } else {
 
     if (player2.getCurrentWave().isState(WAVE_ACTIVE)) {
