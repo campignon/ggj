@@ -40,7 +40,11 @@ Healthbar.prototype.setLife = function(value) {
 }
 
 Healthbar.prototype.removeLife = function(value) {
-  this.currentLife -= value;
+  if (this.currentLife >= value) {
+    this.currentLife -= value;
+  } else {
+    this.currentLife = 0;
+  }
 }
 
 Healthbar.prototype.updateHealth = function(health) {
