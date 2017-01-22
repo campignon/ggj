@@ -19,7 +19,7 @@ const PLAY_BUTTON_TEXT = "Jouer";
 
 // Scene
 /* Countdown */
-const DURATION = 2;
+const DURATION = 90;
 const COUNTDOWN_FONT_SIZE = "72px";
 const COUNTDOWN_FONT_FAMILY = "uni0553";
 const COUNTDOWN_TEXT_COLOR = "#8B3F8B";
