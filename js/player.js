@@ -5,6 +5,7 @@ var Player = function(game, id, x, y, spriteName, healthbar, menu, state) {
   this.state = state;
   this.currentWave = 0;
   this.canSelectWave = true;
+  this.canResetWave = true;
   this.menu = menu;
   this.healthbar = healthbar;
   this.actions = null;

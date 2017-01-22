@@ -117,7 +117,8 @@ Scene.prototype.update = function() {
   //bouton pour activer la wave pour le joueur 1
   if (pad1.isDown(Phaser.Gamepad.XBOX360_A)) {
     //on récupère la wave active du joueur en question et on calcul par rapport à la valeur du joueur adverse
-    if (!player1.getCurrentWave().isState(WAVE_ACTIVE)) {
+    var player1Wave = player1.getCurrentWave();
+    if (!player1Wave.isState(WAVE_ACTIVE) && !player1Wave.isState(WAVE_COOLDOWN)) {
       player1.setWaveState(WAVE_ACTIVE);
     }
   } else {
@@ -129,7 +130,8 @@ Scene.prototype.update = function() {
   //bouton pour activer la wave pour le joueur 2
   if (pad2.isDown(Phaser.Gamepad.XBOX360_A)) {
     //on récupère la wave active du joueur en question et on calcul par rapport à la valeur du joueur adverse
-    if (!player2.getCurrentWave().isState(WAVE_ACTIVE)) {
+    var player2Wave = player2.getCurrentWave();
+    if (!player2Wave.isState(WAVE_ACTIVE) && !player2Wave.isState(WAVE_COOLDOWN)) {
       player2.setWaveState(WAVE_ACTIVE);
     }
   } else {
@@ -142,25 +144,27 @@ Scene.prototype.update = function() {
   if (pad1.justReleased(Phaser.Gamepad.XBOX360_X)) {
 
     //player1.currentWave.resetTimer();
-    resetWave(player1.getCurrentWave());
+    resetWave(player1);
   }
 
   /* bouton pour reset la wave du joueur 2 */
   if (pad2.justReleased(Phaser.Gamepad.XBOX360_X)) {
     //player2.currentWave.resetTimer();
-    resetWave(player2.getCurrentWave());
+    resetWave(player2);
   }
 
 }
 
-function resetWave(wave) {
-  if(resetDelay) {
-    wave.resetTimer();
-    resetDelay = false;
+function resetWave(player) {
+  if(player.canResetWave) {
+    player.getCurrentWave().resetTimer();
+    player.canResetWave = false;
+    player.canSelectWave = false;
 
     var timeout = setTimeout(function () {
-      resetDelay = true;
-      wave.setState(WAVE_SELECTED);
+      player.canResetWave = true;
+      player.canSelectWave = true;
+      player.setWaveState(WAVE_SELECTED);
       clearTimeout(timeout);
     }, WAVE_RESET_DELAY);
   }
