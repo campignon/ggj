@@ -39,19 +39,17 @@ Player.prototype.updateAnimation = function () {
   if(this.getCurrentWave().state == WAVE_DEFAULT || this.getCurrentWave().state == WAVE_SELECTED) {
     this.state = WAIT;
     this.animations.play('wait', 6, true);
-    console.log('animation attente');
 
   } else if (this.getCurrentWave().state == WAVE_ACTIVE) {
 
     if(this.getCurrentWave().type == ATK) {
 
       this.animations.play('stronghit', 6, true);
-      console.log('animation attaque');
 
     } else if (this.getCurrentWave().type == DEF) {
 
       this.animations.play('defense', 6, true);
-      console.log('animation defense');
+
     }
 
   }

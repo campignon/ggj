@@ -83,10 +83,11 @@ Scene.prototype.create = function() {
   this.add.existing(wave6);
 
 
-  // var imgRebour1 = this.add.sprite(0, 0, 'Player ' + id, playerNameTextSettings);
-  // var imgRebour1 = this.add.sprite(0, 0, 'Player ' + id, playerNameTextSettings);
-  // var imgRebour1 = this.add.sprite(0, 0, 'Player ' + id, playerNameTextSettings);
-  // var imgRebour1 = this.add.sprite(0, 0, 'Player ' + id, playerNameTextSettings);
+  var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+  var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+  var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+  var imgRebour1 = this.add.sprite(0, 0, 'playbutton');
+
 
 
   //lancement du timer de la partie
@@ -148,8 +149,10 @@ Scene.prototype.update = function() {
     if (!player2Wave.isState(WAVE_ACTIVE) && !player2Wave.isState(WAVE_COOLDOWN)) {
       player2.setWaveState(WAVE_ACTIVE);
     }
-    player1.updateAnimation();
+    player2.updateAnimation();
+    
   } else {
+
     if (player2.getCurrentWave().isState(WAVE_ACTIVE)) {
       player2.setWaveState(WAVE_SELECTED);
     }

@@ -5,9 +5,7 @@ Preloader.prototype.preload = function() {
   this.stage.backgroundColor = PRELOADER_BACKGROUND;
 
   // Adding the logo on screen
-  var logo = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
-  logo.anchor.setTo(0.5);
-  logo.scale.setTo(PRELOADER_LOGO_SCALE_FACTOR);
+  var logo = this.add.sprite(0, 0, 'title');
 
   var preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY - PRELOADER_PRELOAD_BAR_OFFSET_Y, 'preloadbar');
   preloadBar.anchor.setTo(0.5);
