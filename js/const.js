@@ -55,6 +55,7 @@ const PLAYER_NAME_TEXT_COLOR = "#fff";
 const LIFE_FONT_SIZE = "32px";
 const LIFE_FONT_FAMILY = "uni0553";
 const LIFE_TEXT_COLOR = "#fff";
+const PLAYER_ACTIONS_INTERVAL = 500;
 
 /* Waves variables */
 const LARGESPRITEX = 0;

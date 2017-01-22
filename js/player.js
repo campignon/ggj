@@ -43,3 +43,14 @@ Player.prototype.setNextWave = function() {
 Player.prototype.getCurrentWave = function() {
   return this.menu.waves[this.currentWave];
 };
+
+Player.prototype.startPlayerActions = function(player, opponent) {
+  setInterval(function() {
+    var currentWave = player.getCurrentWave();
+    console.log(currentWave.state + ", " + currentWave.type);
+    if (currentWave.state == WAVE_ACTIVE && currentWave.type == ATK) {
+      console.log("Attacking !!!");
+      opponent.healthbar.removeLife(currentWave.actualValue);
+    }
+  }, PLAYER_ACTIONS_INTERVAL);
+};

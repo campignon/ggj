@@ -67,15 +67,10 @@ Scene.prototype.create = function() {
   pad1 = this.input.gamepad.pad1;
   pad2 = this.input.gamepad.pad2;
 
-  startGame();
-  //lancement des timers du jeu
-  wave1.startTimer();
-  wave2.startTimer();
-  wave3.startTimer();
-  wave4.startTimer();
-  wave5.startTimer();
-  wave6.startTimer();
-
+  // start players
+  player1.startPlayerActions(player1, player2);
+  player2.startPlayerActions(player2, player1);
+  console.log("players initialized !");
 };
 
 Scene.prototype.update = function() {
@@ -106,7 +101,6 @@ Scene.prototype.update = function() {
     //on récupère la wave active du joueur en question et on calcul par rapport à la valeur du joueur adverse
     if (!player1.getCurrentWave().isState(WAVE_ACTIVE)) {
       player1.getCurrentWave().setState(WAVE_ACTIVE);
-      player1.healthbar.removeLife(2);
     }
   } else {
     if (player1.getCurrentWave().isState(WAVE_ACTIVE)) {
@@ -138,11 +132,6 @@ Scene.prototype.update = function() {
     //player2.currentWave.resetTimer();
     resetWave(player2.getCurrentWave());
   }
-
-}
-
-function startGame() {
-
 
 }
 

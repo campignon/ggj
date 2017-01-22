@@ -18,30 +18,6 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.bigWave.scale.y = 5;
   this.bigWave.visible = false;
 
-  // var style = { font: "32px Arial", fill: "#ff0000", align: "center" };
-  // var text = this.game.add.text(x, y+height, "- text on a sprite -\ndrag me", style);
-
-  this.startTimer = function() {
-
-    //update values
-    // this.loopValues = game.time.events.loop(WAVE_VALUES_UPDATE_TIME, function() {
-    //   this.actualValue = this.values[this.cpt];
-    //   this.cpt++;
-    //   this.cpt %= WAVELENGTH;
-    //
-    // }, this);
-
-    //update position
-    // this.loopPosition = game.time.events.loop(WAVE_POSITION_UPDATE_TIME, function() {
-    //   this.tilePosition.x -= WAVESPEED;
-    //   this.bigWave.tilePosition.x -= WAVESPEED;
-    //
-    //   this.cpt += WAVESPEED;
-    //   this.actualValue = this.values[this.cpt % this.values.length];
-    // }, this);
-
-  }
-
   this.resetTimer = function() {
     this.cpt = 0;
     this.actualValue = this.values[0];
@@ -49,13 +25,6 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
     this.bigWave.tilePosition.x = 0;
     this.valueIndex = 0;
     this.setState(WAVE_COOLDOWN);
-  }
-
-  this.stopTimer = function() {
-
-    game.time.events.remove(this.loopPosition);
-    game.time.events.remove(this.loopValues);
-
   }
 
   this.setState = function(state) {
@@ -76,6 +45,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
         if (this.state != WAVE_ACTIVE) {
           this.state = WAVE_ACTIVE;
           this.animations.frame = 2;
+          console.log("active");
         }
         break;
       case WAVE_COOLDOWN:
@@ -91,7 +61,6 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.isState = function(state) {
     return state == this.state;
   }
-
 }
 
 Wave.prototype = Object.create(Phaser.TileSprite.prototype);
