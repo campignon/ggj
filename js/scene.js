@@ -53,8 +53,8 @@ Scene.prototype.create = function() {
   wave2 = new Wave(this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, ATK, 0xff00ff);
   wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, ATK, 0xff00ff);
   wave4 = new Wave(this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
-  wave5 = new Wave(this, this.world.width - 296, 450, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, ATK, 0x84e7ff);
-  wave6 = new Wave(this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
+  wave5 = new Wave(this, this.world.width - 296, 450, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, DEF, 0x84e7ff);
+  wave6 = new Wave(this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, DEF, 0x84e7ff);
 
   //création des menus
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);
@@ -67,6 +67,8 @@ Scene.prototype.create = function() {
   // création des personnages
   player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', healthbar1, menu1, 1);
   player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', healthbar2, menu2, 1);
+  player1.setOpponent(player2);
+  player2.setOpponent(player1);
 
   this.add.existing(player1);
   this.add.existing(player2);
@@ -83,11 +85,6 @@ Scene.prototype.create = function() {
   this.input.gamepad.start();
   pad1 = this.input.gamepad.pad1;
   pad2 = this.input.gamepad.pad2;
-
-  // start players
-  player1.startPlayerActions(player1, player2);
-  player2.startPlayerActions(player2, player1);
-  console.log("players initialized !");
 
   var music = this.add.audio('theme');
   music.loop = true;
@@ -121,11 +118,11 @@ Scene.prototype.update = function() {
   if (pad1.isDown(Phaser.Gamepad.XBOX360_A)) {
     //on récupère la wave active du joueur en question et on calcul par rapport à la valeur du joueur adverse
     if (!player1.getCurrentWave().isState(WAVE_ACTIVE)) {
-      player1.getCurrentWave().setState(WAVE_ACTIVE);
+      player1.setWaveState(WAVE_ACTIVE);
     }
   } else {
     if (player1.getCurrentWave().isState(WAVE_ACTIVE)) {
-      player1.getCurrentWave().setState(WAVE_SELECTED);
+      player1.setWaveState(WAVE_SELECTED);
     }
   }
 
@@ -133,11 +130,11 @@ Scene.prototype.update = function() {
   if (pad2.isDown(Phaser.Gamepad.XBOX360_A)) {
     //on récupère la wave active du joueur en question et on calcul par rapport à la valeur du joueur adverse
     if (!player2.getCurrentWave().isState(WAVE_ACTIVE)) {
-      player2.getCurrentWave().setState(WAVE_ACTIVE);
+      player2.setWaveState(WAVE_ACTIVE);
     }
   } else {
     if (player2.getCurrentWave().isState(WAVE_ACTIVE)) {
-      player2.getCurrentWave().setState(WAVE_SELECTED);
+      player2.setWaveState(WAVE_SELECTED);
     }
   }
 

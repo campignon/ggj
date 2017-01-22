@@ -17,7 +17,6 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.bigWave.visible = false;
   this.bigWave.tint = tint;
 
-
   this.resetTimer = function() {
     this.cpt = 0;
     this.actualValue = this.values[0];
