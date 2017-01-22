@@ -1,5 +1,8 @@
 var MainMenu = function() {};
 
+var pad1, pad2;
+var introMusic;
+
 MainMenu.prototype.create = function() {
 
   // Adding the logo on screen
@@ -16,11 +19,26 @@ MainMenu.prototype.create = function() {
   function() {
 
       this.state.start('Scene');
+      introMusic.stop();
     });
+
+  pad1 = this.input.gamepad.pad1;
+  pad2 = this.input.gamepad.pad2;
+  this.input.gamepad.start();
+  console.log(pad1);
+  console.log(pad2);
+
+  introMusic = this.add.audio('intro_theme');
+  introMusic.loop = true;
+  introMusic.play();
 };
 
 MainMenu.prototype.update = function() {
-
+  if (pad1.justReleased(Phaser.Gamepad.XBOX360_A)
+    || pad2.justReleased(Phaser.Gamepad.XBOX360_A)) {
+    this.state.start('Scene');
+    introMusic.stop();
+  }
 };
 
 MainMenu.prototype.createButton = function(string, x, y, w, h, callback) {
