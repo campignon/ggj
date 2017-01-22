@@ -50,7 +50,7 @@ Scene.prototype.create = function() {
   //création des waves
   wave1 = new Wave(this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
   wave2 = new Wave(this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
-  wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, ATK, 0xff00ff);
+  wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0xff00ff);
   wave4 = new Wave(this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
   wave5 = new Wave(this, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0x84e7ff);
   wave6 = new Wave(this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
@@ -138,7 +138,7 @@ Scene.prototype.update = function() {
     if (!player2Wave.isState(WAVE_ACTIVE) && !player2Wave.isState(WAVE_COOLDOWN)) {
       player2.setWaveState(WAVE_ACTIVE);
     }
-    player1.updateAnimation();
+    player2.updateAnimation();
   } else {
     if (player2.getCurrentWave().isState(WAVE_ACTIVE)) {
       player2.setWaveState(WAVE_SELECTED);
@@ -160,7 +160,7 @@ Scene.prototype.update = function() {
   }
 };
 
-Scene.prototype.gameOver = function() {
+Scene.prototype.gameOver = function(id) {
   console.log("Game over !");
   var graphicOverlay = new Phaser.Graphics(this.game, 0 , 0);
   graphicOverlay.beginFill(0x000000, 0.7);

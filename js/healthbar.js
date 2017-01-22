@@ -45,7 +45,15 @@ Healthbar.prototype.removeLife = function(value) {
     this.currentLife -= value;
   } else {
     this.currentLife = 0;
-    this.scene.gameOver();
+    this.scene.gameOver(this.id);
+  }
+}
+
+Healthbar.prototype.addLife = function(value) {
+  if (this.currentLife <= PLAYERLIFE - value) {
+    this.currentLife += value;
+  } else {
+    this.currentLife = PLAYERLIFE;
   }
 }
 
