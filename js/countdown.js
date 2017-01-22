@@ -5,7 +5,7 @@ var Countdown = function(game, scene, duration) {
   this.scene = scene;
   this.timer = null;
 
-  var countdownSprite = game.add.sprite(game.world.centerX, 0, 'timer');
+  var countdownSprite = game.add.sprite(game.world.centerX, 0, null);
   countdownSprite.anchor.setTo(0.5, 0);
 
   currentTime = DURATION;
