@@ -15,7 +15,7 @@ Preloader.prototype.preload = function() {
   this.load.setPreloadSprite(preloadBar);
 
   // Loading assets
-  this.load.image('playButton', 'assets/sprites/playButton.png');
+  this.load.spritesheet('playButton', 'assets/sprites/playButton.png', 264, 72, 4);
   this.load.image('timer', 'assets/sprites/timer.png');
   this.load.spritesheet('healthbar', 'assets/sprites/barredevie.png', 540,48);
   this.load.spritesheet('player1', 'assets/sprites/p1.png', 296, 256, 18);

@@ -10,7 +10,7 @@ MainMenu.prototype.create = function() {
   //logo.scale.setTo(MAIN_MENU_LOGO_SCALE_FACTOR);
 
   // Creating the "Play" button
-  this.createButton(PLAY_BUTTON_TEXT, this.game.world.centerX, this.game.world.centerY
+  this.createButton('', this.game.world.centerX, this.game.world.centerY
   + MAIN_MENU_PLAY_BUTTON_OFFSET_Y, MAIN_MENU_PLAY_BUTTON_WIDTH,
   MAIN_MENU_PLAY_BUTTON_HEIGHT,
   function() {
@@ -28,6 +28,8 @@ MainMenu.prototype.createButton = function(string, x, y, w, h, callback) {
   playButton.anchor.setTo(0.5, 0.5);
   playButton.width = w;
   playButton.height = h;
+  playButton.animations.add('anim');
+  playButton.animations.play('anim', 12, true);
 
   var playButtonTxt = this.game.add.text(playButton.x, playButton.y, string,
     {
