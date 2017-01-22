@@ -52,12 +52,12 @@ Scene.prototype.create = function() {
   countdown = new Countdown(this.game, this, DURATION);
 
   //création des waves
-  wave1 = new Wave(this.game, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
-  wave2 = new Wave(this.game, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
-  wave3 = new Wave(this.game, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0xff00ff);
-  wave4 = new Wave(this.game, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
-  wave5 = new Wave(this.game, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0x84e7ff);
-  wave6 = new Wave(this.game, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
+  wave1 = new Wave(this.game, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0x84e7ff);
+  wave2 = new Wave(this.game, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0x84e7ff);
+  wave3 = new Wave(this.game, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0x84e7ff);
+  wave4 = new Wave(this.game, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0xff00ff);
+  wave5 = new Wave(this.game, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0xff00ff);
+  wave6 = new Wave(this.game, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, HEAL, 0xff00ff);
 
   //création des menus
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);
@@ -246,6 +246,29 @@ Scene.prototype.gameOver = function(id) {
     player2.stop();
     wave1.active = wave2.active = wave3.active = wave4.active = wave5.active = wave6.active = false;
     this.game.add.tween(sceneOverlay).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0);
+
+    var gridImage = this.add.sprite(0, -this.game.world.height, 'grid');
+    var gridAnim = this.game.add.tween(gridImage).to({y:0}, 1000, Phaser.Easing.Bounce.Out);
+
+    var img = id==0?'timeout':'gameover';
+
+    var messageImage = this.add.sprite(this.game.world.width/2, this.game.world.height/2, img);
+    messageImage.animations.add('walk');
+    messageImage.animations.play('walk', 6, true);
+    messageImage.anchor.setTo(0.5,0.5);
+    messageImage.scale.setTo(2,2);
+    messageImage.visible = false;
+
+    var leThis = this;
+    gridAnim.onComplete.add(function() {
+
+        messageImage.visible = true;
+        var animTimeout = leThis.game.add.tween(messageImage.scale).to({x:1, y:1}, 500, "Quart.easeOut").start();
+
+    }, this);
+
+    gridAnim.start();
+
   }
 };
 

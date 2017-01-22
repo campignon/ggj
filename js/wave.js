@@ -13,7 +13,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.active = false;
   this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px Arial", fill: "#ff0000", align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
   this.addChild(this.valueText);
-
+  this.animations.frame = 2;
   this.bigWave = game.add.tileSprite(WAVE_BIG_POSX, WAVE_BIG_POSY, WAVE_BIG_WIDTH, WAVE_BIG_HEIGHT, largeSpriteName);
   this.bigWave.visible = false;
   this.bigWave.tint = tint;
@@ -35,7 +35,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
       case WAVE_DEFAULT:
         if (this.state != WAVE_DEFAULT) {
           this.state = WAVE_DEFAULT;
-          this.animations.frame = 0;
+          this.animations.frame = 2;
         }
         break;
       case WAVE_SELECTED:
@@ -47,7 +47,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
       case WAVE_ACTIVE:
         if (this.state != WAVE_ACTIVE) {
           this.state = WAVE_ACTIVE;
-          this.animations.frame = 2;
+          this.animations.frame = 0;
           console.log("active");
         }
         break;
@@ -75,7 +75,7 @@ Wave.prototype.update = function() {
 
   if (this.cpt % FRAMECOUNTSTEP == 0) {
     this.tilePosition.x -= FRAMESTEP;
-    this.bigWave.tilePosition.x -= FRAMESTEP;
+    this.bigWave.tilePosition.x -= FRAMESTEP*4;
     this.actualValue = this.values[this.valueIndex % this.values.length];
     this.valueText.text = this.actualValue;
     this.valueIndex++;

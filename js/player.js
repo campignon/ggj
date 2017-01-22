@@ -13,6 +13,10 @@ var Player = function(game, id, x, y, spriteName, healthbar, menu) {
   this.getCurrentWave().setState(WAVE_SELECTED);
   this.animations.frame = 0;
   this.id = id;
+  if(id==2) {
+    this.anchor.x =0.5;
+    this.scale.x *= -1;
+  }
 
   this.wait = this.animations.add('wait', [0,1]);
   this.wait = this.animations.add('heal', [14,15,16,17]);

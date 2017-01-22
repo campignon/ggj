@@ -21,6 +21,9 @@ Preloader.prototype.preload = function() {
   this.load.image('trois', 'assets/sprites/3.png');
   this.load.image('fight', 'assets/sprites/fight.png');
   this.load.image('timer', 'assets/sprites/timer.png');
+  this.load.image('grid', 'assets/sprites/grid.png');
+  this.load.spritesheet('timeout', 'assets/sprites/timeout.png',1280,720,4);
+  this.load.spritesheet('gameover', 'assets/sprites/gameover.png',1280,720,4);
   this.load.spritesheet('healthbar', 'assets/sprites/barredevie.png', 540,48);
   this.load.spritesheet('player1', 'assets/sprites/p1.png', 296, 256, 18);
   this.load.spritesheet('player2', 'assets/sprites/p2.png', 296, 256, 18);

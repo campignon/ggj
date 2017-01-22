@@ -16,7 +16,7 @@ const PLAY_BUTTON_TEXT = "Jouer";
 
 // Scene
 /* Countdown */
-const DURATION = 60;
+const DURATION = 2;
 const COUNTDOWN_FONT_SIZE = "72px";
 const COUNTDOWN_FONT_FAMILY = "uni0553";
 const COUNTDOWN_TEXT_COLOR = "#8B3F8B";
@@ -48,8 +48,8 @@ const SMALLSINUS = [5,5,4,3,2,1,0,0,0,0,1,2,3,4,5,5,5,5,4,3,2,1,0,0,0,0,1,2,3,4,
 const PLAYERLIFE = 150;
 const PLAYER1X = 284;
 const PLAYER1Y = 400;
-const PLAYER2X = 700;
-const PLAYER2Y = 400;
+const PLAYER2X = 800;
+const PLAYER2Y = 420;
 const PLAYER_NAME_FONT_SIZE = "24px";
 const PLAYER_NAME_FONT_FAMILY = "uni0553";
 const PLAYER_NAME_TEXT_COLOR = "#fff";
