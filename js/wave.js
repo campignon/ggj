@@ -1,4 +1,4 @@
-var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, values, type) {
+var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, values, type, tint) {
 
   Phaser.TileSprite.call(this, game, x, y, width, height, spriteName);
 
@@ -13,10 +13,10 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px Arial", fill: "#ff0000", align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
   this.addChild(this.valueText);
 
-  this.bigWave = game.add.tileSprite(WAVE_BIG_POSX, WAVE_BIG_POSY, width, height, spriteName);
-  this.bigWave.scale.x = 5;
-  this.bigWave.scale.y = 5;
+  this.bigWave = game.add.tileSprite(WAVE_BIG_POSX, WAVE_BIG_POSY, WAVE_BIG_WIDTH, WAVE_BIG_HEIGHT, largeSpriteName);
   this.bigWave.visible = false;
+  this.bigWave.tint = tint;
+
 
   this.resetTimer = function() {
     this.cpt = 0;
@@ -79,17 +79,17 @@ Wave.prototype.update = function() {
   if(this.state == WAVE_SELECTED || this.state == WAVE_ACTIVE) {
 
     this.bigWave.visible = true;
-    this.bigWave.alpha = 1;
+    this.bigWave.alpha = 0.8;
 
   } else if (this.state == WAVE_COOLDOWN) {
 
     this.bigWave.visible = true;
-    this.bigWave.alpha = 0.5;
+    this.bigWave.alpha = 0.3;
 
   } else {
 
     this.bigWave.visible = false;
-    this.bigWave.alpha = 1;
+    this.bigWave.alpha = 0.8;
 
   }
 

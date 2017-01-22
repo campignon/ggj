@@ -4,6 +4,7 @@ var PlayerMenu = function(game, background, x, y, waves) {
 
   this.game = game;
   this.waves = waves;
+  this.animations.frame = 0;
 
 }
 

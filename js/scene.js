@@ -6,6 +6,7 @@ var player1;
 var player2;
 var wave1, wave2, wave3, wave4, wave5, wave6;
 var resetDelay = true;
+var animChangeGauche, animChangeDroite;
 
 Scene.prototype.preload = function() {
 
@@ -20,6 +21,14 @@ Scene.prototype.create = function() {
   var plan2 = this.add.sprite(40, this.world.height - 292, 'plan2');
   this.add.existing(plan2);
 
+  var animplan2D = this.add.sprite(this.world.width - 640, plan2.y, 'animplan2D');
+  animplan2D.animations.add('walk');
+  animplan2D.animations.play('walk', 10, true);
+
+  var animplan2G = this.add.sprite(40, plan2.y, 'animplan2G');
+  animplan2G.animations.add('walk');
+  animplan2G.animations.play('walk', 10, true);
+
   var arene = this.add.sprite(448, this.world.height - 157, 'arene');
   this.add.existing(arene);
   arene.animations.add('walk');
@@ -28,16 +37,24 @@ Scene.prototype.create = function() {
   var overlay = this.add.sprite(0, 0, 'overlay');
   this.add.existing(overlay);
 
+  animChangeGauche = this.add.sprite(16,208,'animbtG');
+  this.add.existing(animChangeGauche);
+  animChangeGauche.animations.add('walk');
+
+  animChangeDroite = this.add.sprite(this.world.width - 16 - 32, 208,'animbtD');
+  this.add.existing(animChangeDroite);
+  animChangeDroite.animations.add('walk');
+
   var countdown = new Countdown(this, DURATION);
   countdown.start(this);
 
   //création des waves
-  wave1 = new Wave(this, 32, 384, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'waveatk-l', TRIANGLE, ATK);
-  wave2 = new Wave(this, 32, 462, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'waveatk-l', CARRE, ATK);
-  wave3 = new Wave(this, 32, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'waveatk-l', SINUS, ATK);
-  wave4 = new Wave(this, this.world.width - 288, 384, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'waveatk-l', SAW, ATK);
-  wave5 = new Wave(this, this.world.width - 288, 462, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'waveatk-l', SMALLSAW, ATK);
-  wave6 = new Wave(this, this.world.width - 288, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'waveatk-l', SMALLSINUS, ATK);
+  wave1 = new Wave(this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
+  wave2 = new Wave(this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, ATK, 0xff00ff);
+  wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, ATK, 0xff00ff);
+  wave4 = new Wave(this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
+  wave5 = new Wave(this, this.world.width - 296, 450, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, ATK, 0x84e7ff);
+  wave6 = new Wave(this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
 
   //création des menus
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);
@@ -71,6 +88,7 @@ Scene.prototype.create = function() {
   player1.startPlayerActions(player1, player2);
   player2.startPlayerActions(player2, player1);
   console.log("players initialized !");
+
 };
 
 Scene.prototype.update = function() {
@@ -151,6 +169,11 @@ function resetWave(wave) {
 function lockWaveSelection(player) {
   if (player.canSelectWave) {
     player.canSelectWave = false;
+    if(player.id == 1) {
+      animChangeDroite.play('walk', 12, false);
+    } else {
+      animChangeGauche.play('walk', 12, false);
+    }
 
     var timeout = setTimeout(function() {
       player.canSelectWave = true;
