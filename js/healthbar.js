@@ -1,8 +1,8 @@
 var Healthbar = function(game, id, healthBarX, healthBarY, totalLife) {
   this.bar = game.add.sprite(healthBarX, healthBarY, 'healthbar');
   this.lifeText = game.add.text(0, 0, totalLife, {
-    font: '32px uni0553',
-    fill: '#fff',
+    font: LIFE_FONT_SIZE + ' ' + LIFE_FONT_FAMILY,
+    fill: LIFE_TEXT_COLOR,
     align: 'center'
   });
   this.id = id;
@@ -19,8 +19,8 @@ var Healthbar = function(game, id, healthBarX, healthBarY, totalLife) {
   if(id==2) {this.bar.scale.x *= -1;}
 
   var playerNameTextSettings = {
-    font: '24px uni0553',
-    fill: '#fff',
+    font: PLAYER_NAME_FONT_SIZE + ' ' + PLAYER_NAME_FONT_FAMILY,
+    fill: PLAYER_NAME_TEXT_COLOR,
     align: 'left'
   };
   var playerNameText = game.add.text(0, 0, 'Player ' + id, playerNameTextSettings);

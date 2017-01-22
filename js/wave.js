@@ -17,6 +17,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.bigWave.visible = false;
   this.bigWave.tint = tint;
 
+
   this.resetTimer = function() {
     this.cpt = 0;
     this.actualValue = this.values[0];
@@ -44,6 +45,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
         if (this.state != WAVE_ACTIVE) {
           this.state = WAVE_ACTIVE;
           this.animations.frame = 2;
+          console.log("active");
         }
         break;
       case WAVE_COOLDOWN:
@@ -59,7 +61,6 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.isState = function(state) {
     return state == this.state;
   }
-
 }
 
 Wave.prototype = Object.create(Phaser.TileSprite.prototype);
