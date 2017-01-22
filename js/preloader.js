@@ -16,6 +16,10 @@ Preloader.prototype.preload = function() {
 
   // Loading assets
   this.load.spritesheet('playButton', 'assets/sprites/playButton.png', 264, 72, 4);
+  this.load.image('un', 'assets/sprites/1.png');
+  this.load.image('deux', 'assets/sprites/2.png');
+  this.load.image('trois', 'assets/sprites/3.png');
+  this.load.image('fight', 'assets/sprites/fight.png');
   this.load.image('timer', 'assets/sprites/timer.png');
   this.load.spritesheet('healthbar', 'assets/sprites/barredevie.png', 540,48);
   this.load.spritesheet('player1', 'assets/sprites/p1.png', 296, 256, 18);

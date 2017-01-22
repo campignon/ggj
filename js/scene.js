@@ -94,21 +94,21 @@ Scene.prototype.create = function() {
   overlay.alpha = 1;
 
   //
-  var imgRebour1 = this.add.sprite(this.world.width/2, this.world.height/2, 'playButton');
+  var imgRebour1 = this.add.sprite(this.world.width/2, this.world.height/2, 'trois');
   imgRebour1.anchor.setTo(0.5, 0.5);
   imgRebour1.scale.setTo(0.1,0.1);
 
-  var imgRebour2 = this.add.sprite(this.world.width/2, this.world.height/2, 'playButton');
+  var imgRebour2 = this.add.sprite(this.world.width/2, this.world.height/2, 'deux');
   imgRebour2.anchor.setTo(0.5, 0.5);
   imgRebour2.scale.setTo(0.1,0.1);
   imgRebour2.visible = false;
 
-  var imgRebour3 = this.add.sprite(this.world.width/2, this.world.height/2, 'playButton');
+  var imgRebour3 = this.add.sprite(this.world.width/2, this.world.height/2, 'un');
   imgRebour3.anchor.setTo(0.5, 0.5);
   imgRebour3.scale.setTo(0.1,0.1);
   imgRebour3.visible = false;
 
-  var imgRebour4 = this.add.sprite(this.world.width/2, this.world.height/2, 'playButton');
+  var imgRebour4 = this.add.sprite(this.world.width/2, this.world.height/2, 'fight');
   imgRebour4.anchor.setTo(0.5, 0.5);
   imgRebour4.scale.setTo(0.1,0.1);
   imgRebour4.visible = false;
@@ -143,7 +143,8 @@ Scene.prototype.create = function() {
   tween4.onComplete.add(function() {
 
     imgRebour4.visible = false;
-    sceneOverlay.alpha = 0;
+    this.game.add.tween(sceneOverlay).to({alpha:0}, 500, "Quart.easeOut").start();
+
     //lancement du timer de la partie
     countdown.start(this.game);
     wave1.active = wave2.active = wave3.active = wave4.active = wave5.active = wave6.active = true;
