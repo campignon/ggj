@@ -44,7 +44,7 @@ const SMALLSINUS = [5,5,4,3,2,1,0,0,0,0,1,2,3,4,5,5,5,5,4,3,2,1,0,0,0,0,1,2,3,4,
 
 
 /* Player variables */
-const PLAYERLIFE = 50;
+const PLAYERLIFE = 150;
 const PLAYER1X = 284;
 const PLAYER1Y = 400;
 const PLAYER2X = 700;

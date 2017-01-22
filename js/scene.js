@@ -51,10 +51,10 @@ Scene.prototype.create = function() {
   //création des waves
   wave1 = new Wave(this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
   wave2 = new Wave(this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
-  wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, ATK, 0xff00ff);
+  wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, ATK, 0xff00ff);
   wave4 = new Wave(this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
-  wave5 = new Wave(this, this.world.width - 296, 450, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, DEF, 0x84e7ff);
-  wave6 = new Wave(this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, DEF, 0x84e7ff);
+  wave5 = new Wave(this, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0x84e7ff);
+  wave6 = new Wave(this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
 
   //création des menus
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);
