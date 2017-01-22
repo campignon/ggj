@@ -222,17 +222,29 @@ Scene.prototype.update = function() {
     player2.updateAnimation();
   }
 
-  /* bouton pour reset la wave du joueur 1 */
-  if (pad1.justReleased(Phaser.Gamepad.XBOX360_X)) {
 
-    //player1.currentWave.resetTimer();
-    resetWave(player1);
-  }
+  if (GAME_MODE == 'DDR')
+  {
+    if (pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1 && player1.canSelectWave) {
+      resetWave(player1);
+    }
 
-  /* bouton pour reset la wave du joueur 2 */
-  if (pad2.justReleased(Phaser.Gamepad.XBOX360_X)) {
-    //player2.currentWave.resetTimer();
-    resetWave(player2);
+    if (pad2.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1 && player2.canSelectWave) {
+      resetWave(player2);
+    }
+  } else {
+    /* bouton pour reset la wave du joueur 1 */
+    if (pad1.justReleased(Phaser.Gamepad.XBOX360_X)) {
+
+      //player1.currentWave.resetTimer();
+      resetWave(player1);
+    }
+
+    /* bouton pour reset la wave du joueur 2 */
+    if (pad2.justReleased(Phaser.Gamepad.XBOX360_X)) {
+      //player2.currentWave.resetTimer();
+      resetWave(player2);
+    }
   }
 };
 
