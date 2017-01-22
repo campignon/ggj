@@ -87,11 +87,6 @@ Scene.prototype.create = function() {
   pad1 = this.input.gamepad.pad1;
   pad2 = this.input.gamepad.pad2;
 
-  // start players
-  player1.startPlayerActions(player1, player2);
-  player2.startPlayerActions(player2, player1);
-
-
   var music = this.add.audio('theme');
   music.loop = true;
   music.play();
@@ -163,8 +158,7 @@ Scene.prototype.update = function() {
     //player2.currentWave.resetTimer();
     resetWave(player2);
   }
-
-}
+};
 
 function resetWave(player) {
   if(player.canResetWave) {
