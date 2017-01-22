@@ -275,7 +275,11 @@ Scene.prototype.gameOver = function(id) {
     gridAnim.onComplete.add(function() {
 
         messageImage.visible = true;
-        var animTimeout = leThis.game.add.tween(messageImage.scale).to({x:1, y:1}, 500, "Quart.easeOut").start();
+        var animTimeout = leThis.game.add.tween(messageImage.scale).to({x:1, y:1}, 500, "Quart.easeOut");
+        animTimeout.start();
+        animTimeout.onComplete.add(function() {
+          location.reload();
+        });
 
     }, this);
 

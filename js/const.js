@@ -1,5 +1,5 @@
 // Game mode
-GAME_MODE = 'XBOX';
+GAME_MODE = 'DDR';
 
 // Preloader
 const PRELOADER_BACKGROUND = "#252525";
