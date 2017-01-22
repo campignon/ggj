@@ -59,7 +59,7 @@ const DEF = 2;
 const WAVEWIDTH = 256;
 const WAVEHEIGHT = 40;
 const FRAMESTEP = 4;
-const FRAMECOUNTSTEP = 50; // On avance de 1 groupe de FRAMESTEP pixels toutes les FRAMECOUNTSTEP frames
+const FRAMECOUNTSTEP = 3; // On avance de 1 groupe de FRAMESTEP pixels toutes les FRAMECOUNTSTEP frames
 const WAVE_TEXT_POSX = 50;
 const WAVE_TEXT_POSY = 50;
 const WAVE_FONT_SIZE = '20px';
@@ -68,8 +68,10 @@ const WAVE_TEXT_COLOR = '#FF0000';
 const WAVE_TEXT_ALIGN = 'left'
 const WAVE_RESET_DELAY = 2000;
 const LOCK_WAVE_SELECTION_DELAY = 200;
-const WAVE_BIG_POSX = 20;
-const WAVE_BIG_POSY = 150;
+const WAVE_BIG_POSX = 120;
+const WAVE_BIG_POSY = 200;
+const WAVE_BIG_WIDTH = 1024;
+const WAVE_BIG_HEIGHT = 160;
 
 // Waves states
 const WAVE_DEFAULT = 0;

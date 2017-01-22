@@ -1,4 +1,4 @@
-var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, values, type) {
+var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, values, type, tint) {
 
   Phaser.TileSprite.call(this, game, x, y, width, height, spriteName);
 
@@ -13,34 +13,9 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px Arial", fill: "#ff0000", align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
   this.addChild(this.valueText);
 
-  this.bigWave = game.add.tileSprite(WAVE_BIG_POSX, WAVE_BIG_POSY, width, height, spriteName);
-  this.bigWave.scale.x = 5;
-  this.bigWave.scale.y = 5;
+  this.bigWave = game.add.tileSprite(WAVE_BIG_POSX, WAVE_BIG_POSY, WAVE_BIG_WIDTH, WAVE_BIG_HEIGHT, largeSpriteName);
   this.bigWave.visible = false;
-
-  // var style = { font: "32px Arial", fill: "#ff0000", align: "center" };
-  // var text = this.game.add.text(x, y+height, "- text on a sprite -\ndrag me", style);
-
-  this.startTimer = function() {
-
-    //update values
-    // this.loopValues = game.time.events.loop(WAVE_VALUES_UPDATE_TIME, function() {
-    //   this.actualValue = this.values[this.cpt];
-    //   this.cpt++;
-    //   this.cpt %= WAVELENGTH;
-    //
-    // }, this);
-
-    //update position
-    // this.loopPosition = game.time.events.loop(WAVE_POSITION_UPDATE_TIME, function() {
-    //   this.tilePosition.x -= WAVESPEED;
-    //   this.bigWave.tilePosition.x -= WAVESPEED;
-    //
-    //   this.cpt += WAVESPEED;
-    //   this.actualValue = this.values[this.cpt % this.values.length];
-    // }, this);
-
-  }
+  this.bigWave.tint = tint;
 
   this.resetTimer = function() {
     this.cpt = 0;
@@ -49,13 +24,6 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
     this.bigWave.tilePosition.x = 0;
     this.valueIndex = 0;
     this.setState(WAVE_COOLDOWN);
-  }
-
-  this.stopTimer = function() {
-
-    game.time.events.remove(this.loopPosition);
-    game.time.events.remove(this.loopValues);
-
   }
 
   this.setState = function(state) {
@@ -110,17 +78,17 @@ Wave.prototype.update = function() {
   if(this.state == WAVE_SELECTED || this.state == WAVE_ACTIVE) {
 
     this.bigWave.visible = true;
-    this.bigWave.alpha = 1;
+    this.bigWave.alpha = 0.8;
 
   } else if (this.state == WAVE_COOLDOWN) {
 
     this.bigWave.visible = true;
-    this.bigWave.alpha = 0.5;
+    this.bigWave.alpha = 0.3;
 
   } else {
 
     this.bigWave.visible = false;
-    this.bigWave.alpha = 1;
+    this.bigWave.alpha = 0.8;
 
   }
 
