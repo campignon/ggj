@@ -5,7 +5,6 @@ var pad2;
 var player1;
 var player2;
 var wave1, wave2, wave3, wave4, wave5, wave6;
-var resetDelay = true;
 var animChangeGauche, animChangeDroite;
 
 Scene.prototype.preload = function() {
@@ -61,8 +60,8 @@ Scene.prototype.create = function() {
   var menu2 = new PlayerMenu(this, 'movelist-background2', this.world.width - 304, 350, [wave4, wave5, wave6]);
 
   // Création des healthbars
-  var healthbar1 = new Healthbar(this, 1, 0, 0, PLAYERLIFE);
-  var healthbar2 = new Healthbar(this, 2, this.world.width, 0, PLAYERLIFE);
+  var healthbar1 = new Healthbar(this.game, this, 1, 0, 0, PLAYERLIFE);
+  var healthbar2 = new Healthbar(this.game, this, 2, this.world.width, 0, PLAYERLIFE);
 
   // création des personnages
   player1 = new Player(this.game, 1, PLAYER1X, PLAYER1Y, 'player1', healthbar1, menu1);
@@ -87,10 +86,11 @@ Scene.prototype.create = function() {
   pad1 = this.input.gamepad.pad1;
   pad2 = this.input.gamepad.pad2;
 
+  console.log("music init");
   var music = this.add.audio('theme');
   music.loop = true;
   music.play();
-
+  console.log("music initialized");
 };
 
 Scene.prototype.update = function() {
@@ -166,7 +166,10 @@ Scene.prototype.gameOver = function() {
   graphicOverlay.beginFill(0x000000, 0.7);
   graphicOverlay.drawRect(0,0, this.game.width, this.game.height);
   graphicOverlay.endFill();
-  this.game.add.image(0, 0, graphicOverlay.generateTexture());
+  var sceneOverlay = graphicOverlay.generateTexture();
+  var overlay = this.game.add.sprite(0, 0, sceneOverlay);
+  overlay.alpha = 0;
+  this.game.add.tween(overlay).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0);
 };
 
 function resetWave(player) {
