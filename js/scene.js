@@ -50,7 +50,7 @@ Scene.prototype.create = function() {
 
   //création des waves
   wave1 = new Wave(this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
-  wave2 = new Wave(this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, ATK, 0xff00ff);
+  wave2 = new Wave(this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
   wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, ATK, 0xff00ff);
   wave4 = new Wave(this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
   wave5 = new Wave(this, this.world.width - 296, 450, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, ATK, 0x84e7ff);
@@ -65,8 +65,8 @@ Scene.prototype.create = function() {
   var healthbar2 = new Healthbar(this, 2, this.world.width, 0, PLAYERLIFE);
 
   // création des personnages
-  player1 = new Player(this, 1, PLAYER1X, PLAYER1Y, 'player1', healthbar1, menu1, 1);
-  player2 = new Player(this, 2, PLAYER2X, PLAYER2Y, 'player2', healthbar2, menu2, 1);
+  player1 = new Player(this.game, 1, PLAYER1X, PLAYER1Y, 'player1', healthbar1, menu1);
+  player2 = new Player(this.game, 2, PLAYER2X, PLAYER2Y, 'player2', healthbar2, menu2);
 
   this.add.existing(player1);
   this.add.existing(player2);
@@ -87,7 +87,6 @@ Scene.prototype.create = function() {
   // start players
   player1.startPlayerActions(player1, player2);
   player2.startPlayerActions(player2, player1);
-  console.log("players initialized !");
 
 };
 
@@ -120,10 +119,12 @@ Scene.prototype.update = function() {
     if (!player1.getCurrentWave().isState(WAVE_ACTIVE)) {
       player1.getCurrentWave().setState(WAVE_ACTIVE);
     }
+    player1.updateAnimation();
   } else {
     if (player1.getCurrentWave().isState(WAVE_ACTIVE)) {
       player1.getCurrentWave().setState(WAVE_SELECTED);
     }
+    player1.updateAnimation();
   }
 
   //bouton pour activer la wave pour le joueur 2
@@ -132,10 +133,12 @@ Scene.prototype.update = function() {
     if (!player2.getCurrentWave().isState(WAVE_ACTIVE)) {
       player2.getCurrentWave().setState(WAVE_ACTIVE);
     }
+    player1.updateAnimation();
   } else {
     if (player2.getCurrentWave().isState(WAVE_ACTIVE)) {
       player2.getCurrentWave().setState(WAVE_SELECTED);
     }
+    player2.updateAnimation();
   }
 
   /* bouton pour reset la wave du joueur 1 */
