@@ -15,7 +15,7 @@ var Player = function(game, id, x, y, spriteName, healthbar, menu) {
   this.id = id;
 
   this.wait = this.animations.add('wait', [0,1]);
-  this.wait = this.animations.add('weakhit', [14,15,16,17]);
+  this.wait = this.animations.add('heal', [14,15,16,17]);
   this.wait = this.animations.add('defense', [10,11,12,13]);
   this.wait = this.animations.add('stronghit', [2,3,4,5,6,7,8,9]);
 
@@ -43,13 +43,11 @@ Player.prototype.updateAnimation = function () {
   } else if (this.getCurrentWave().state == WAVE_ACTIVE) {
 
     if(this.getCurrentWave().type == ATK) {
-
       this.animations.play('stronghit', 6, true);
-
     } else if (this.getCurrentWave().type == DEF) {
-
       this.animations.play('defense', 6, true);
-
+    } else {
+      this.animations.play('heal', 6, true);
     }
 
   }
@@ -118,5 +116,9 @@ var action = function(player, opponent) {
     }
     var realDamages = Math.max(damages, 0);
     opponent.healthbar.removeLife(realDamages);
+  } else if (currentWave.state == WAVE_ACTIVE && currentWave.type == HEAL) {
+    console.log("Healing !!!");
+    var heal = currentWave.actualValue;
+    player.healthbar.addLife(heal);
   }
 };

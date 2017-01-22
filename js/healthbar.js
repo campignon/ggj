@@ -1,4 +1,5 @@
-var Healthbar = function(game, id, healthBarX, healthBarY, totalLife) {
+var Healthbar = function(game, scene, id, healthBarX, healthBarY, totalLife) {
+  this.scene = scene;
   this.bar = game.add.sprite(healthBarX, healthBarY, 'healthbar');
   this.lifeText = game.add.text(0, 0, totalLife, {
     font: LIFE_FONT_SIZE + ' ' + LIFE_FONT_FAMILY,
@@ -44,6 +45,15 @@ Healthbar.prototype.removeLife = function(value) {
     this.currentLife -= value;
   } else {
     this.currentLife = 0;
+    this.scene.gameOver(this.id);
+  }
+}
+
+Healthbar.prototype.addLife = function(value) {
+  if (this.currentLife <= PLAYERLIFE - value) {
+    this.currentLife += value;
+  } else {
+    this.currentLife = PLAYERLIFE;
   }
 }
 

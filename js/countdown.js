@@ -32,7 +32,7 @@ Countdown.prototype.update = function() {
 
     if (currentTime == 0) {
       // End game
-      this.scene.gameOver();
+      this.scene.gameOver(0);
     }
   }
 };

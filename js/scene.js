@@ -5,7 +5,6 @@ var pad2;
 var player1;
 var player2;
 var wave1, wave2, wave3, wave4, wave5, wave6;
-var resetDelay = true;
 var animChangeGauche, animChangeDroite;
 var graphicOverlay;
 var music;
@@ -53,7 +52,7 @@ Scene.prototype.create = function() {
   //création des waves
   wave1 = new Wave(this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
   wave2 = new Wave(this, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0xff00ff);
-  wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, ATK, 0xff00ff);
+  wave3 = new Wave(this, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0xff00ff);
   wave4 = new Wave(this, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0x84e7ff);
   wave5 = new Wave(this, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0x84e7ff);
   wave6 = new Wave(this, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, ATK, 0x84e7ff);
@@ -63,8 +62,8 @@ Scene.prototype.create = function() {
   var menu2 = new PlayerMenu(this, 'movelist-background2', this.world.width - 304, 350, [wave4, wave5, wave6]);
 
   // Création des healthbars
-  var healthbar1 = new Healthbar(this, 1, 0, 0, PLAYERLIFE);
-  var healthbar2 = new Healthbar(this, 2, this.world.width, 0, PLAYERLIFE);
+  var healthbar1 = new Healthbar(this.game, this, 1, 0, 0, PLAYERLIFE);
+  var healthbar2 = new Healthbar(this.game, this, 2, this.world.width, 0, PLAYERLIFE);
 
   // création des personnages
   player1 = new Player(this.game, 1, PLAYER1X, PLAYER1Y, 'player1', healthbar1, menu1);
@@ -207,7 +206,6 @@ Scene.prototype.update = function() {
       player2.setWaveState(WAVE_ACTIVE);
     }
     player2.updateAnimation();
-
   } else {
 
     if (player2.getCurrentWave().isState(WAVE_ACTIVE)) {
@@ -230,9 +228,8 @@ Scene.prototype.update = function() {
   }
 };
 
-Scene.prototype.gameOver = function() {
+Scene.prototype.gameOver = function(id) {
   console.log("Game over !");
-
 };
 
 function resetWave(player) {

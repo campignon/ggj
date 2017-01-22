@@ -67,6 +67,7 @@ const LARGESPRITEX = 0;
 const LARGESPRITEY = 200;
 const ATK = 1;
 const DEF = 2;
+const HEAL = 3;
 const WAVEWIDTH = 256;
 const WAVEHEIGHT = 40;
 const FRAMESTEP = 4;
