@@ -1,8 +1,9 @@
-var Player = function(game, id, x, y, spriteName, healthbar, menu, state) {
+var Player = function(game, id, x, y, spriteName, healthbar, menu) {
 
   Phaser.Sprite.call(this, game, x, y, spriteName);
+  this.game = game;
   this.name = spriteName;
-  this.state = state;
+  this.state = WAIT;
   this.currentWave = 0;
   this.canSelectWave = true;
   this.canResetWave = true;
@@ -10,6 +11,15 @@ var Player = function(game, id, x, y, spriteName, healthbar, menu, state) {
   this.healthbar = healthbar;
   this.actions = null;
   this.getCurrentWave().setState(WAVE_SELECTED);
+  this.animations.frame = 0;
+
+  this.wait = this.animations.add('wait', [0,1]);
+  this.wait = this.animations.add('weakhit', [14,15,16,17]);
+  this.wait = this.animations.add('defense', [10,11,12,13]);
+  this.wait = this.animations.add('stronghit', [2,3,4,5,6,7,8,9]);
+
+  this.animations.play('wait', 6, true);
+
 };
 
 Player.prototype = Object.create(Phaser.Sprite.prototype);
@@ -21,6 +31,30 @@ Player.prototype.setOpponent = function(opponent) {
 
 Player.prototype.update = function() {
   this.healthbar.updateHealth();
+};
+
+Player.prototype.updateAnimation = function () {
+
+  if(this.getCurrentWave().state == WAVE_DEFAULT || this.getCurrentWave().state == WAVE_SELECTED) {
+    this.state = WAIT;
+    this.animations.play('wait', 6, true);
+    console.log('animation attente');
+
+  } else if (this.getCurrentWave().state == WAVE_ACTIVE) {
+
+    if(this.getCurrentWave().type == ATK) {
+
+      this.animations.play('stronghit', 6, true);
+      console.log('animation attaque');
+
+    } else if (this.getCurrentWave().type == DEF) {
+
+      this.animations.play('defense', 6, true);
+      console.log('animation defense');
+    }
+
+  }
+
 };
 
 Player.prototype.setPreviousWave = function() {
