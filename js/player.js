@@ -12,6 +12,7 @@ var Player = function(game, id, x, y, spriteName, healthbar, menu) {
   this.actions = null;
   this.getCurrentWave().setState(WAVE_SELECTED);
   this.animations.frame = 0;
+  this.id = id;
 
   this.wait = this.animations.add('wait', [0,1]);
   this.wait = this.animations.add('heal', [14,15,16,17]);
@@ -38,22 +39,15 @@ Player.prototype.updateAnimation = function () {
   if(this.getCurrentWave().state == WAVE_DEFAULT || this.getCurrentWave().state == WAVE_SELECTED) {
     this.state = WAIT;
     this.animations.play('wait', 6, true);
-    console.log('animation attente');
 
   } else if (this.getCurrentWave().state == WAVE_ACTIVE) {
 
     if(this.getCurrentWave().type == ATK) {
-
       this.animations.play('stronghit', 6, true);
-      console.log('animation attaque');
-
     } else if (this.getCurrentWave().type == DEF) {
-
       this.animations.play('defense', 6, true);
-      console.log('animation defense');
     } else {
       this.animations.play('heal', 6, true);
-      console.log('animation heal');
     }
 
   }
