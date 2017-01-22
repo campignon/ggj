@@ -45,8 +45,8 @@ Scene.prototype.create = function() {
   this.add.existing(animChangeDroite);
   animChangeDroite.animations.add('walk');
 
-  var countdown = new Countdown(this, DURATION);
-  countdown.start(this);
+  var countdown = new Countdown(this.game, this, DURATION);
+  countdown.start(this.game);
 
   //création des waves
   wave1 = new Wave(this, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0xff00ff);
@@ -158,6 +158,15 @@ Scene.prototype.update = function() {
     //player2.currentWave.resetTimer();
     resetWave(player2);
   }
+};
+
+Scene.prototype.gameOver = function() {
+  console.log("Game over !");
+  var graphicOverlay = new Phaser.Graphics(this.game, 0 , 0);
+  graphicOverlay.beginFill(0x000000, 0.7);
+  graphicOverlay.drawRect(0,0, this.game.width, this.game.height);
+  graphicOverlay.endFill();
+  this.game.add.image(0, 0, graphicOverlay.generateTexture());
 };
 
 function resetWave(player) {

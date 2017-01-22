@@ -1,7 +1,9 @@
 var currentTime;
 var countdownText;
 
-var Countdown = function(game, duration) {
+var Countdown = function(game, scene, duration) {
+  this.scene = scene;
+
   var countdownSprite = game.add.sprite(game.world.centerX, 0, 'timer');
   countdownSprite.anchor.setTo(0.5, 0);
 
@@ -29,7 +31,8 @@ Countdown.prototype.update = function() {
     countdownText.setText(currentTime);
 
     if (currentTime == 0) {
-    // End game
+      // End game
+      this.scene.gameOver();
     }
   }
 };
