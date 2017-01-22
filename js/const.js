@@ -19,7 +19,7 @@ const PLAY_BUTTON_TEXT = "Jouer";
 
 // Scene
 /* Countdown */
-const DURATION = 2;
+const DURATION = 90;
 const COUNTDOWN_FONT_SIZE = "72px";
 const COUNTDOWN_FONT_FAMILY = "uni0553";
 const COUNTDOWN_TEXT_COLOR = "#8B3F8B";
@@ -87,6 +87,7 @@ const WAVE_BIG_POSX = 120;
 const WAVE_BIG_POSY = 200;
 const WAVE_BIG_WIDTH = 1024;
 const WAVE_BIG_HEIGHT = 160;
+const WAVE_CROP_RECTANGLE = 48;
 
 // Waves states
 const WAVE_DEFAULT = 0;

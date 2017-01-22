@@ -11,7 +11,7 @@ var Wave = function(game, x, y, width, height, spriteName, largeSpriteName, valu
   this.actualValue = values[0];
   this.state = WAVE_DEFAULT;
   this.active = false;
-  this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px Arial", fill: "#ff0000", align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
+  this.valueText = game.add.text(0, 0, this.actualValue, { font: "32px uni0553", fill: '#ffff00', align: "center" });  /*{font:WAVE_FONT_SIZE + " " + WAVE_FONT_FAMILY, fill: WAVE_TEXT_COLOR, align: WAVE_TEXT_ALIGN});*/
   this.addChild(this.valueText);
   this.animations.frame = 2;
   this.bigWave = game.add.tileSprite(WAVE_BIG_POSX, WAVE_BIG_POSY, WAVE_BIG_WIDTH, WAVE_BIG_HEIGHT, largeSpriteName);
