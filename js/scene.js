@@ -52,12 +52,12 @@ Scene.prototype.create = function() {
   countdown = new Countdown(this.game, this, DURATION);
 
   //création des waves
-  wave1 = new Wave(this.game, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0x84e7ff);
-  wave2 = new Wave(this.game, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0x84e7ff);
-  wave3 = new Wave(this.game, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0x84e7ff);
-  wave4 = new Wave(this.game, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0xff00ff);
-  wave5 = new Wave(this.game, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0xff00ff);
-  wave6 = new Wave(this.game, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, HEAL, 0xff00ff);
+  wave1 = new Wave(this.game, 40, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe1', 'courbe1HD', TRIANGLE, ATK, 0x84e7ff, 1);
+  wave2 = new Wave(this.game, 40, 458, WAVEWIDTH, WAVEHEIGHT, 'courbe2', 'courbe2HD', CARRE, DEF, 0x84e7ff, 1);
+  wave3 = new Wave(this.game, 40, 542, WAVEWIDTH, WAVEHEIGHT, 'courbe5', 'courbe5HD', SMALLSAW, HEAL, 0x84e7ff, 1);
+  wave4 = new Wave(this.game, this.world.width - 296, 374, WAVEWIDTH, WAVEHEIGHT, 'courbe4', 'courbe4HD', SAW, ATK, 0xff00ff, 2);
+  wave5 = new Wave(this.game, this.world.width - 296, 460, WAVEWIDTH, WAVEHEIGHT, 'courbe3', 'courbe3HD', SINUS, DEF, 0xff00ff, 2);
+  wave6 = new Wave(this.game, this.world.width - 296, 534, WAVEWIDTH, WAVEHEIGHT, 'courbe6', 'courbe6HD', SMALLSINUS, HEAL, 0xff00ff, 2);
 
   //création des menus
   var menu1 = new PlayerMenu(this, 'movelist-background1', 0, 350, [wave1, wave2, wave3]);
