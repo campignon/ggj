@@ -50,6 +50,7 @@ Preloader.prototype.preload = function() {
   this.load.image('courbe4HD', 'assets/sprites/courbe4HD.png');
   this.load.image('courbe5HD', 'assets/sprites/courbe5HD.png');
   this.load.image('courbe6HD', 'assets/sprites/courbe6HD.png');
+  this.load.audio('intro_theme', 'assets/sound/intro_theme.mp3');
   this.load.audio('theme', 'assets/sound/theme.mp3');
 };
 

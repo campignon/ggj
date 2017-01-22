@@ -1,3 +1,6 @@
+// Game mode
+GAME_MODE = 'XBOX';
+
 // Preloader
 const PRELOADER_BACKGROUND = "#252525";
 const PRELOADER_LOGO_SCALE_FACTOR = 3;
